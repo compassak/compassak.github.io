@@ -11,20 +11,20 @@
     <title>3. Red-Black-BST :: en</title>
 
     
-    <link href="/css/nucleus.css?1612350497" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1612350497" rel="stylesheet">
-    <link href="/css/hybrid.css?1612350497" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1612350497" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1612350497" rel="stylesheet">
-    <link href="/css/auto-complete.css?1612350497" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1612350497" rel="stylesheet">
-    <link href="/css/theme.css?1612350497" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1612350497" rel="stylesheet">
+    <link href="/css/nucleus.css?1612355318" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1612355318" rel="stylesheet">
+    <link href="/css/hybrid.css?1612355318" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1612355318" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1612355318" rel="stylesheet">
+    <link href="/css/auto-complete.css?1612355318" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1612355318" rel="stylesheet">
+    <link href="/css/theme.css?1612355318" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1612355318" rel="stylesheet">
     
-      <link href="/css/theme-mine.css?1612350497" rel="stylesheet">
+      <link href="/css/theme-mine.css?1612355318" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1612350497"></script>
+    <script src="/js/jquery-3.3.1.min.js?1612355318"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -2144,14 +2144,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1612350497"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1612350497"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1612355318"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1612355318"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/compass-ak.gitee.io";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1612350497"></script>
+<script type="text/javascript" src="/js/search.js?1612355318"></script>
 
     
   </div>
@@ -3566,7 +3566,7 @@
 
 <p>在一般情况下，我们将一颗标准二叉查找树上的结点称为：2-结点（含有一个键和两条链接）。为了保持树的平衡性，在一颗2-3查找树中还含有：<strong>3-结点（含有两个键三条链接）,左链接指向的 2-3 树中的键都小于该结点，中链接指向的 2-3 树中的键都位于该结点的两个键之间，右链接指向的 2-3树中的键都大于该结点。</strong>下图所示就是一颗2-3查找树。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/2-3search_tree.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/2-3search_tree.png" alt="2-3树" /></p>
 
 <p><center>2-3 树</center></p>
 
@@ -3590,7 +3590,7 @@
 
 <p>而在一颗2-3查找树中，如果查找未命中结束于一个2-结点。我们只需要将2-结点替换为3-结点。将需要插入的键保存在其中即可，如下图所示。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/insert_node_to_2node.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/insert_node_to_2node.png" alt="2-3树" /></p>
 
 <p><center>向2-结点插入新键</center></p>
 
@@ -3598,7 +3598,7 @@
 
 <p>向3-结点中插入新键就比向2-结点中插入新键要更复杂一些，因为3-结点已经含有了两个键没有插入空间了。但是为了将新键插入，我们可以键该键<strong>临时</strong>的存入该结点中,该结点就成为了一个4-结点（含有3个键4条链接）。由于4-结点是临时的，我们必须将它分解变换成2-结点或3-结点，一颗4-结点很容易转换成一颗由3个2-结点构成的2-3查找树。原4-结点中的中间结点成为此树的根节点。这颗树既是一个3个结点的二叉树，也是一颗完美平衡的2-3树。转换的过程揭示了一颗2-3树是如何 “生长” 的。具体如下图所示。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/insert_node_to_3node.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/insert_node_to_3node.png" alt="2-3树" /></p>
 
 <p><center>向3-结点插入新键</center></p>
 
@@ -3606,7 +3606,7 @@
 
 <p>假设一次插入的未命中查找操作结束于一个3-结点，且它的父结点是一颗2-结点。在这种情况下我们需要保持树的完美平衡的前提下，将新键插入。我们可以像在1.3节中描述的一样，将3-结点临时的转换为一个4-结点，但是此时我们不能直接将4-结点分解为2-结点，因为此操作会破坏2-3树的完美平衡。我们将4-结点的中键上移存入原来父结点中。其他两个键分解为2个2-结点，连接在父结点原中键两端的链接上。由于原来的父结点是2-结点有插入空间，可以直接将中键插入到此结点中。经过此操作2-3树任是完美平衡的，所有的空链接到根结点的距离仍然相等，具体过程如下图所示。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/inser_node_to_3node_WP2node.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/inser_node_to_3node_WP2node.png" alt="2-3树" /></p>
 
 <p><center>向一个父结点是2-结点的3-结点中插入新键</center></p>
 
@@ -3614,7 +3614,7 @@
 
 <p>假设一次插入的未命中查询操作结束于一个父结点为3-结点的3结点中。和1.4一样我们先构造一个临时的4-结点，然后将它的中键移动到父结点中。但是父结点也是一个3-结点，因此我们需要再次构建一个临时4-结点，然后进行相同的变换，分解结点并将中键移动到父结点中。如果路径上的结点除开根结点全部都是3-结点，我们就需要一直重复构建和分解临时的4-结点，将中键插入更高层的父结点中。直到最后达到根结点。具体过程如下图所示。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/inser_node_to_3node_WP3node.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/inser_node_to_3node_WP3node.png" alt="2-3树" /></p>
 
 <p><center>向一个父结点是3-结点的3-结点中插入新键</center></p>
 
@@ -3622,7 +3622,7 @@
 
 <p>如果从插入结点到到根节点全部都是3-结点，在经历数次变换后根结点最后会变换成一个临时的4-结点。此时我们就可以直接将4-结点直接分解为3个2-结点，它的中键变成新的根节点，左右两个键连接在新的根结点的左右链接上。操作完成后树高加1，如下图所示。显而易见此次变换的仍保持了2-3树的完美平衡性。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/Decompose_root.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/Decompose_root.png" alt="2-3树" /></p>
 
 <p><center>分解根结点</center></p>
 
@@ -3637,7 +3637,7 @@
 
 <p>根据上述2-3查找树的原理，我们就可以模拟插入，根据最后生成树的形态判断树的性能。使用两组用例进行测试，一组是键按随机的顺序插入，二组是按键值的正序插入，测试过程和结果如下图所示。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/insert_test.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/insert_test.png" alt="2-3树" /></p>
 
 <p><center>插入测试</center></p>
 
@@ -3697,8 +3697,8 @@
 
 <tbody>
 <tr>
-<td><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/rotate_left.png" alt="2-3树" /></td>
-<td><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/rotate_right.png" alt="2-3树" /></td>
+<td><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/rotate_left.png" alt="2-3树" /></td>
+<td><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/rotate_right.png" alt="2-3树" /></td>
 </tr>
 </tbody>
 </table>
@@ -3724,7 +3724,7 @@
 
 <p>上述3种情况中第三种情况是最复杂的，我们可以将其转换为第二种情况，第二种情况又可以转换为第一种情况。三种情况的具体转换过程如下图从左到右依次所示。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/insert_node_to_3nodeRBT.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/insert_node_to_3nodeRBT.png" alt="2-3树" /></p>
 
 <p><center>向一个3-结点中插入新键的三种情况</center></p>
 
@@ -3750,7 +3750,7 @@
 
 <p>三个步骤与下图对应。</p>
 
-<p><img src="https://github.com/compassak/images/raw/master/AKblog/Algorithm/searching/red_chain_up.png" alt="2-3树" /></p>
+<p><img src="https://gitee.com/compass-ak/images/raw/master/AKblog/Algorithm/searching/red_chain_up.png" alt="2-3树" /></p>
 
 <p><center>将红链接在树中向上传递</center></p>
 
@@ -4924,20 +4924,20 @@ public class RedBlackBST {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1612350497"></script>
-    <script src="/js/perfect-scrollbar.min.js?1612350497"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1612350497"></script>
-    <script src="/js/jquery.sticky.js?1612350497"></script>
-    <script src="/js/featherlight.min.js?1612350497"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1612350497"></script>
-    <script src="/js/highlight.pack.js?1612350497"></script>
+    <script src="/js/clipboard.min.js?1612355318"></script>
+    <script src="/js/perfect-scrollbar.min.js?1612355318"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1612355318"></script>
+    <script src="/js/jquery.sticky.js?1612355318"></script>
+    <script src="/js/featherlight.min.js?1612355318"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1612355318"></script>
+    <script src="/js/highlight.pack.js?1612355318"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1612350497"></script>
-    <script src="/js/learn.js?1612350497"></script>
-    <script src="/js/hugo-learn.js?1612350497"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1612355318"></script>
+    <script src="/js/learn.js?1612355318"></script>
+    <script src="/js/hugo-learn.js?1612355318"></script>
 
-    <link href="/mermaid/mermaid.css?1612350497" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1612350497"></script>
+    <link href="/mermaid/mermaid.css?1612355318" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1612355318"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
