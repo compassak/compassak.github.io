@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AKblog on en</title>
+    <link>https://compass-ak.gitee.io/</link>
+    <description>Recent content in AKblog on en</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Jul 2019 00:20:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://compass-ak.gitee.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. Undigraph</title>
+      <link>https://compass-ak.gitee.io/algorithms/graphs/undigraph/</link>
+      <pubDate>Thu, 09 Jul 2020 12:02:02 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/graphs/undigraph/</guid>
+      <description>无向图 -图片资料来自 Algorithms, 4th Edition
+图：图是由一组顶点和一组能够将两个顶点相连的边组成。
+一般情况下为了和其他的图模型相互区别，又称图为无向图。在现实中的许多问题都可以抽象为一张图，结合优秀的算法，许多困难的问题都可以迎刃而解。
+1. 术语表 和图有关的术语，定义非常多，其一部分内容如下：
+   术语 条件（释义）     顶点相邻 两个顶点通过一条边相连时，并称这条边 依附于 这两个顶点   顶点的度数 连接它边的总数   子图 指定图的子集   路径 由边顺序连接的一系列顶点   简单路径 一条没有重复顶点的路径   环 含有至少一条边且起点和终点相同的路径   简单环 除起点和终点相同外，不含有重复顶点和边的环   顶点连通 两个顶点间存在一条连接双方的路径时   连通图 图中任意一个顶点都存在一条路径到达另外一个顶点   极大连通子图 非连通图的一个连通部分   无环图 不包含环的图   图密度 指已经连接的顶点对占所有可能被连接顶点对的比例   稀疏图 很少的顶点对被连接   稠密图 很少的顶点对没有被连接   二分图 顶点可分割为两个互不相交的子集，两个子集内的顶点不相邻    2.</description>
+    </item>
+    
+    <item>
+      <title>1. Binary-Search</title>
+      <link>https://compass-ak.gitee.io/algorithms/searching/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE/</link>
+      <pubDate>Sun, 14 Jun 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/searching/%E4%BA%8C%E5%88%86%E6%B3%95%E6%9F%A5%E6%89%BE/</guid>
+      <description>二分查找 二分查找也称为折半查找（Binary Search），是一种效率较高的查找方法。它的一般查找过程为：首先，需要将待查的线性表按关键字排序，然后将表中间位置的元素的关键字与查找关键字比较。如果二者相等，则查找成功。如果不相等，则使用表的中间位置元素将表分为左右两个子表，查找关键字大于中间位置元素的关键字 -&amp;gt; 继续查询右子表；查找关键字小于中间元素的关键子 -&amp;gt; 继续查询左子表。重复以上过程直到查找到满足查询条件的元素，若最后细分到无法再划分子表时则没有此元素查询失败。由二分查找的原理我们很容易得出其时间复杂度为：lgN（以2为底）。
+1. 基于有序数组的二分查找 想要在一个数组查找到一个元素的索引，最普通的方法就是将数组遍历一遍，将元素的关键字逐个的与查找关键字比较，直到找到元素返回其索引。这种方法的时间复杂度是线性级别的，在数组长度非常大且处于最坏的情况时，可能是无法解决的。而二分法就将解决这个这个问题的时间复杂度降低到了对数级别。如果数组长度为：100000000000, 在最坏的情况下，前者需要循环访问数组：1000亿次，而后者只需要访问数组约：36.5412次。这简直是降维打击，让我们能在有限算力的计算机上解决更多问题。下面是一个基于有序数组二分查找的实现。
+Java
+public class BinarySearch { //二分法查找元素的索引 public static int Search(int[] a, int key){ int lo=0, hi = a.length-1; while (lo &amp;lt;= hi){ int mid = lo + (hi-lo)/2; if (key &amp;gt; a[mid]) lo = mid + 1; else if (key &amp;lt; a[mid]) hi = mid - 1; //found else return mid; } //not found return -1; } }  可以看到基于有序数组的二分查找实现非常简单，只需要两个辅助指针即可完成。</description>
+    </item>
+    
+    <item>
+      <title>1. Merge-Sort</title>
+      <link>https://compass-ak.gitee.io/algorithms/sorting/%E5%B9%B6%E5%BD%92%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Sun, 17 May 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/sorting/%E5%B9%B6%E5%BD%92%E6%8E%92%E5%BA%8F/</guid>
+      <description>并归排序 顾名思义，并归排序是排序算法的一种，它的主要特点及思想就是体现在 “并归” 二字。并归排序中的并归的含义是指，将两个有序的数组并归组合成一个更大的有序数组。
+而并归排序的思想就是将一个待排序数组（递归的）平均分割成两个子数组，然后分别给左右两个子数组排序，最后将排序结果并归起来，完成数组的排序。
+1. 自顶向下的并归排序 自顶向下的并归排序也被称为递归并归排序。递归实现的归并排序是算法设计中分治思想的典型应用。我们将一个大问题分割成小问题分别解决，然后用所有小问题的答案来解决整个大问题： 将一个待排序数组（递归的）平均分割成两个子数组，两个子数组又递归的调用排序方法，直到递归到子数组只含一个元素。然后将二者并归就得到了一个含两个元素的有序数组。最后依次回溯并归直到待排序数组中没有子数组，完成排序。
+Java
+public class Merge { //并归所需的辅助数组 private static int[] aux; /** * sort1 自顶向下的并归排序 * @param a 待排序数组 */ public static void sort1(int[] a) { //分配空间 aux = new int[a.length]; sort1(a, 0, a.length-1); } private static void sort1(int[] a, int lo, int hi) { //数组长度为1 if (hi &amp;lt;= lo) return; int mid = lo + (hi - lo) / 2; //排序左半边 sort1(a, lo, mid); //排序右半边 sort1(a, mid + 1, hi); //并归结果 merge(a, lo, mid, hi); } /** * sort2 自底向上的并归排序 * @param a 待排序数组 */ public static void sort2(int[] a){ int n = a.</description>
+    </item>
+    
+    <item>
+      <title>1. Spring loC Container</title>
+      <link>https://compass-ak.gitee.io/java/web/spring/spring-loc-container/</link>
+      <pubDate>Fri, 20 Sep 2019 17:02:15 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/spring/spring-loc-container/</guid>
+      <description>1. Spring 概述 Spring使创建Java企业应用程序变得容易。它提供了在企业环境中使用Java语言所需的一切，并支持Groovy和Kotlin作为JVM上的替代语言，并且可以根据应用程序的需求灵活地创建多种体系结构。从Spring Framework 5.1开始，Spring需要有JDK 8+（Java SE 8+）的开发运行环境，并提供对JDK 11 LTS的现成支持。
+Spring框架分为多个模块。应用程序可以根据其需求选择所需的模块。核心容器模块是Spring框架的核心，包括配置模型和依赖项注入机制。除此之外，Spring框架还为不同的应用程序体系结构提供了基础支持，包括消息传递，事务性数据和持久性以及Web。它还包括基于Servlet的Spring MVC Web框架，以及并行的Spring WebFlux反应式Web框架。
+2. Spring loC Container 概述 IoC (Inversion of Control) 翻译成中文称之为“控制反转”，为什么会叫控制反转呢？ 在我们以往的编程中，通常 new 一个类的实例，控制权往往都是由程序控制。而在使用Spring框架的应用程序中，这些工作都是交给 Spring loC Container 来做。由 Spring loC Container来负责实例化，定位，配置和注入应用程序的对象以及对象间的依赖关系。对于对象的控制权由程序员转向了程序（Spring loC Container), 所以才会叫做控制反转。
+在org.springframework.beans和org.springframework.context包是Spring框架的IoC容器的基础核心。 BeanFactory 容器提供了一种高级配置机制，能够管理任何类型的对象。 ApplicationContext 是的子接口BeanFactory。它增加了：
+ 与Spring的AOP功能轻松集成 消息资源处理（用于国际化） 活动发布 应用层特定的上下文，例如WebApplicationContext 用于Web应用程序中的。  简而言之，BeanFactory提供了配置框架和基本功能，并 ApplicationContext 增加了更多针对企业的功能。该 ApplicationContext 是一个完整 BeanFactory 的超集。
+由于 BeanFactory 逐渐被弃用，我们着重了解org.springframework.context.ApplicationContext，由于它是BeanFactory的超集，ApplicationContext接口也代表Spring IoC容器，并负责实例化，配置和组装Bean。容器通过读取配置元数据来获取有关要实例化，配置和组装哪些对象的指令。配置元数据可以用XML，Java批注或Java代码表示。它使您能够表达组成应用程序的对象以及这些对象之间的丰富相互依赖关系。ApplicationContext 所表示的 spring 容器在整个spring框架中的作用如下图所示。
+Spring 工作原理
+spring 容器会将你配置元数据注入到应用程序中的类对象中，因此在 ApplicationContext 创建和初始化后，应用程序系统将是配置完全且可运行的。</description>
+    </item>
+    
+    <item>
+      <title>1. SpringMVC 环境搭建</title>
+      <link>https://compass-ak.gitee.io/java/web/springmvc/springmvc-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 16 Sep 2019 17:02:15 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/springmvc/springmvc-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>1. Mybatis工作原理</title>
+      <link>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Sun, 15 Sep 2019 17:02:15 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</guid>
+      <description>1. Mybatis 简介 MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。
+2. Mybatis工作原理 Mybatis 是一个Java框架，它的工作过程中一定包含了许多对象的构造和销毁，对象是面向对象编程的最重要的机制。了解 Mybatis 框架中的一些关键对象如何构造产生以及销毁，就相当于理解了 Mybatis 的工作原理。Mybatis工作原理可以用如下流程图进行说明。
+图中步骤流程说明：
+ 1.读取 mybatis-config.xml 配置文件：mybatis-config.xml 为 Mybatis 的全局配置文件，文件中包含了对 MyBatis 系统的核心设置，包含获取数据库连接实例的数据源（DataSource）和决定事务作用域和控制方式的事务管理器（TransactionManager）。
+ 2.加载映射器文件：映射器文件即Sql映射器文件，该文件中配置了操作数据库的Sql语句，需要在Mybatis配置文件 mybatis-config.xml 文件中声明加载。mybatis-config.xml 文件可以加载多个映射文件，每个映射文件一般对应数据库的一张数据表。
+ 3.构造会话工厂对象：Mybatis根据其核心配置信息构建 SqlSessionFactory 对象。SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，使用 SqlSessionFactory 的最佳实践是在应用运行期间不要重复创建多次。
+ 4.构造会话对象：SqlSession 会话对象由 SqlSessionFactory 会话工厂对象创建，该对象包含执行SQL语句的所有方法。SqlSession 的实例不是线程安全的， 每个线程都应该有它自己的 SqlSession 实例。
+ 5.Executor 执行器：Mybatis 底层定义了一个 Executor 接口来操作数据库， 它根据 SqlSession 对象传递的参数动态的生成需要执行的 Sql 语句，同时负责查询缓存的维护。</description>
+    </item>
+    
+    <item>
+      <title>1.  Activity生命周期</title>
+      <link>https://compass-ak.gitee.io/android/activity/activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+      <pubDate>Thu, 29 Aug 2019 22:50:43 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/android/activity/activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
+      <description>1. Activity简介 Activity 是一个Android应用组件，用户可与其提供的屏幕进行交互，以执行拨打电话、拍摄照片、发送电子邮件或查看地图等操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口通常会充满屏幕，但也可小于屏幕并浮动在其他窗口之上。
+一个应用通常由多个彼此松散联系的 Activity 组成。 一般会指定应用中的某个 Activity 为“主”Activity，即首次启动应用时呈现给用户的那个 Activity。 而且每个 Activity 均可启动另一个 Activity，以便执行不同的操作。
+2. Activity生命周期 所谓Activity的生命周期就是一个Activity从创建到销毁的过程，这整个过程都是由Android系统处理，我们一般不能直接知道Activity处于哪个生命周期，但是和其他具有生命周期的对象一样，当Activity进入生命周期的每个阶段Android系统都会调用其特定的方法，以方便我们来管理Activity，以及在Activity的各个生命周期执行必要的相关操作。例如：在Activity刚创建时，需要设置页面布局，在Activity被停止时要释放网络或数据库连接，这种比较消耗系统资源的对象。
+以下的Activity内的方法包扩了每一个Activity基本生命周期方法。
+public class ExampleActivity extends Activity { @Override public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); // The activity is being created. } @Override protected void onStart() { super.onStart(); // The activity is about to become visible. } @Override protected void onResume() { super.onResume(); // The activity has become visible (it is now &amp;quot;resumed&amp;quot;).</description>
+    </item>
+    
+    <item>
+      <title>1. web服务器原理（网络程序）</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8E%9F%E7%90%86%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Sun, 03 Feb 2019 13:58:34 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8E%9F%E7%90%86%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/</guid>
+      <description>## []()##web服务器原理 我们现在每天浏览网页，浏览器向服务器发送请求，服务器中的web服务器来处理来至全世界各地的请求信息。web服务器请求并返回文档信息，web服务器的基本原理是怎样的呢？
+我们可以这样分析，web服务器是用来处理请求信息，返回服务器信息资源。处理信息，返回信息。这不就是程序的功能吗？
+没错web服务器就是许多网络程序的集合，下面用一个网络程序例子来深入了解一下web服务器的工作原理，网络程序代码如下。
+package my_java_network_program; import java.net.*; import java.io.*; public class Server { public static void main(String[] args) throws IOException { ServerSocket server=new ServerSocket(8888); Socket sock=server.accept(); FileInputStream in=new FileInputStream(&amp;quot;文件路径\\index.html&amp;quot;); OutputStream out=sock.getOutputStream(); int len=0; byte buffer[]=new byte[1024]; while((len=in.read(buffer))&amp;gt;0) { out.write(buffer,0,len); } in.close(); out.close(); sock.close(); server.close(); } }  程序用的是Java网络编程的知识。运行程序后，在浏览器地址栏输入：http://localhost:8888/ 就可访问文件路径中的 index.html 的网页类容。如果是在另一台机器访问，只需将localhost换成你机器的IP地址就可访问。访问结果如下所示：
+那么，其实web服务器就是向上面的网络程序的集合，来处理发送到服务器的请求信息，并返回信息资源。</description>
+    </item>
+    
+    <item>
+      <title>2. Digraph</title>
+      <link>https://compass-ak.gitee.io/algorithms/graphs/digraph/</link>
+      <pubDate>Sat, 18 Jul 2020 09:23:35 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/graphs/digraph/</guid>
+      <description>有向图 -图片资料来自 Algorithms, 4th Edition
+有向图中的有向是指图中每一条边都是有向的，每一条边连接的两个顶点都是一个有序对，它们的邻接性是单向的。能从 v-&amp;gt;w ，不一定能从 w-&amp;gt;v。这是有向图与无向图的本质区别，这种区别导致了两种图处理算法上的巨大差异。
+1. 术语表 学习有向图的处理算法我们，需要了解一些定义和术语。如下表：
+   术语 条件（释义）     有向图 一幅有方向性的图，由一组顶点和一组有方向的边组成，每条有方向的边都连接着有序的一对顶点。   出度 顶点指出边的总数   入度 指向该顶点边的总数   有向路径 由一系列顶点组成，对于其中的每一个顶点都存在一条有向边从它指向序列中的下一个顶点   有向环 至少含有一条边且起点终点相同的有向路径   简单有向环 是一条不含有重复顶点的环（除起点和终点相同）   长度（路径，环） （路径，环）所包含的边数   有向无环图（DAG） 不含环的有向图   强连通 有向图中的两顶点相互可达,称两顶点强连通。如果有向图所有顶点强连通则图强连通    2. 有向图数据类型 有向图虽然在逻辑上比无向图中多出了许多限定条件，但是其数据类型的实现更简单。由于边是有向的，所以我们用邻接表表示边时，只会出现一次。具体实现细节如下：
+public class Digraph{ private final int V; // 顶点数 private int E; // 边数 private Node[] adj; // 邻接表 /** * 邻接表结点静态内部类 */ private static class Node{ int vertex; // 顶点 Node next; // 下一个元素的引用 Node(){} Node(int vertex, Node next){ this.</description>
+    </item>
+    
+    <item>
+      <title>2. Binary-Search-Tree</title>
+      <link>https://compass-ak.gitee.io/algorithms/searching/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/</link>
+      <pubDate>Fri, 12 Jun 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/searching/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/</guid>
+      <description>二叉查找树 我们都知道在一定程度上，程序 = 算法 + 数据结构。抛开数据结构说算法；抛开算法说数据结构，都是不太妥当的。而衡量一种数据结构的优略，一是看具体的问题需求，二是看其插入，删除排序等各个方面的性能。
+在二分查找中我们使用的经典的数组实现，在查询的效率上直接达到了 lgN 对数级别的效率。但是数组这种数据结构在插入元素时，就有些力不从心了。在最坏的情况下使用基于二分查找的数组插入一个元素需要N的时间成本。
+而二叉查找树就是一种能将链表插入的灵活性和有序数组查找的高效性结合起来的数据结构，在平均情况下可以实现对数级别的插入和查询操作。
+1. 二叉查找树 定义：一棵二叉查找树（BST）是一棵二叉树，其中每个结点都含有一个键以及相关联的值，且每个结点的键都大于其左子树中的任意结点的键而小于右子树的任意结点的键。
+2. 实现 由于二叉查找树不是一个完全二叉树，所以难以用数组很难去表示它。这就需要写一个类来表示二叉查找树上的一个结点。每一个节点需要含有一个键，一个值，一条指向左子结点的链接，一条指向右子结点的链接和一个结点计数器。左链接指向一棵由小于该结点的所有键组成的二叉查找树，右链接指向一棵由大于该结点的所有键组成的二叉查找树。结点计数器 给出了以该结点为根的子树的结点总数。
+1.查找元素
+根据二叉查找树的定义和性质，我们可以得出以下查找某一元素的算法：
+如果树是空的，则查找未命中； 如果被查找的键和根结点的键相等，查找命中； 如果未命中我们就在适当的子树中继续查找。如果被查找的键较小就选择左子树，较大则选择右子树。 如果最后没有找到该元素，则返回null；
+2.插入元素
+插入元素算法的实现逻辑和查找很相似：
+如果树是空的，就返回一个含有该键值对的新结点； 如果被查找的键小于根结点的键，我们会继续在左子树中插入该键，在相等时更新结点的value值，否则在右子树中插入该键，并返回结点引用。 更新结点计数器
+3.rank排名
+rank 从1开始排序, 查找元素按键值排序的排名，根据二叉查找树的性质，算法思路如下：
+如果给定的键和根结点的键相等，我们返回左子树中的结点总数 t； 如果给定的键小于根结点，我们会返回该键在左子树中的排名（递归计算）； 如果给定的键大于根结点，我们会返回 t+1（根结点）加上它在右子树中的排名（递归计算）。
+二叉查找树的完整实现如下，上述 1.查找元素， 2.插入元素， 3.rank排名 分别对应方法：get(), put(), rank()。
+Java
+public class BinarySearchTree { private Node root; //根节点 /** * 节点静态内部类 */ private static class Node { private int key; //节点键 private String value; //节点值 private Node left, right; //指向左右子树的连接 private int N; //以该节点为根的子树的节点数 Node(int key, String value, int N) { this.</description>
+    </item>
+    
+    <item>
+      <title>2. Quick-Sort</title>
+      <link>https://compass-ak.gitee.io/algorithms/sorting/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Mon, 18 May 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/sorting/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</guid>
+      <description>快速排序 快速排序算法可能是应用最为广泛的算法，它的实现较为简单而且排序效率比大多数算法都要高。仅需要一个辅助栈就可以实现在原数组上原地排序。但是快速排序算法稳定性不高，如果使用不当经常可能使算法的性能降低至平方级别。如何正确使用和优化快速排序是使用它之前必须研究的问题。
+1. 基本实现 快速排序算法和并归的共性就是它们都是一种分治排序算法，而且在某种意义上，两种算法是互补的。并归是将待排序数组平分（递归的）两个子数组，将两个子数组排序后将结果并归起来就得到了一个有序数组。而快速排序是选取一个切分元素，将数组切分（递归的）为两个子数组，然后将两个子数组分别排序，子数组排序完成整个数组也就排好序了。这一区别在代码中的体现就是并归排序的递归调用发生在处理整个数组之前；在快速排序中，递归调用发生在处理整个数组之后。快速排序基本实现如下。
+Java
+public class Quick { public static void sort(int[] a){ sort(a, 0, a.length - 1); } private static void sort(int[] a, int lo, int hi){ if(hi &amp;lt;= lo)return; int j = partition(a, lo, hi); sort(a, lo, j-1); sort(a, j+1, hi); } //切分操作 private static int partition(int[] a, int lo, int hi){ //左右扫描指针 int i = lo, j = hi+1; //切分元素 int V = a[lo]; while (true){ //扫描左右元素，出现左元素比V大或右元素比V小，则交换两元素位置。 while (a[++i] &amp;lt; V) if (i == hi) break; while (a[--j] &amp;gt; V) if (j == lo) break; if (i &amp;gt;= j) break; exch(a, i, j); } exch(a, lo, j); return j; } //交换元素位置 private static void exch(int[] a, int i, int j){ int tmp = a[i]; a[i] = a[j]; a[j] = tmp; } }  此算法实现的关键在于切分如何实现，在上述代码中切分操作的实现思路为：</description>
+    </item>
+    
+    <item>
+      <title>2. Mybatis映射器1</title>
+      <link>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E6%98%A0%E5%B0%84%E5%99%A81/</link>
+      <pubDate>Mon, 16 Sep 2019 17:02:15 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E6%98%A0%E5%B0%84%E5%99%A81/</guid>
+      <description>一. Mybatis配置文件概述 Mybatis核心配置文件 mybatis-config.xml 配置了很多影响Mybatis行为的信息，在一个项目内此文件不会轻易改动，而且在与 Spring 框架整合后 Mybatis 核心配置文件信息将配置到 Spring 的配置文件中。我们平时应用只需基础的了解一下常用的配置。
+mybatis-config.xml 常用配置模板代码如下：
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot; ?&amp;gt; &amp;lt;!DOCTYPE configuration PUBLIC &amp;quot;-//mybatis.org//DTD Config 3.0//EN&amp;quot; &amp;quot;http://mybatis.org/dtd/mybatis-3-config.dtd&amp;quot;&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;propertises/&amp;gt; &amp;lt;!-- 属性 --&amp;gt; &amp;lt;settings&amp;gt; &amp;lt;!-- 设置 --&amp;gt; &amp;lt;setting name=&amp;quot;&amp;quot; value=&amp;quot;&amp;quot; /&amp;gt; &amp;lt;/settings&amp;gt; &amp;lt;typeAliases /&amp;gt; &amp;lt;!-- 类型别名 --&amp;gt; &amp;lt;typeHandlers&amp;gt;&amp;lt;/typeHandlers&amp;gt; &amp;lt;!-- 类型处理器 --&amp;gt; &amp;lt;objectFactory type=&amp;quot;&amp;quot;&amp;gt; &amp;lt;!-- 对象工厂 --&amp;gt; &amp;lt;property name=&amp;quot;&amp;quot; value=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;/objectFactory&amp;gt; &amp;lt;plugins&amp;gt; &amp;lt;plugin interceptor=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/plugin&amp;gt; &amp;lt;!-- 插件 --&amp;gt; &amp;lt;/plugins&amp;gt; &amp;lt;environments default=&amp;quot;development&amp;quot;&amp;gt; &amp;lt;!-- 配置环境 --&amp;gt; &amp;lt;environment id=&amp;quot;development&amp;quot;&amp;gt; &amp;lt;transactionManager type=&amp;quot;JDBC&amp;quot;/&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>2. Acticity的创建,启动和关闭</title>
+      <link>https://compass-ak.gitee.io/android/activity/acticity%E7%9A%84%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E5%92%8C%E5%85%B3%E9%97%AD/</link>
+      <pubDate>Thu, 05 Sep 2019 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/android/activity/acticity%E7%9A%84%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E5%92%8C%E5%85%B3%E9%97%AD/</guid>
+      <description>现在的大多数Android IDE 都可以直接创建 Activity “类型”的 java 类，以及完成一系列的操作。我们做 Android 开发肯定需要知道其中的具体步骤细节。
+1. Activity的创建 创建一个 Activity 必须继承Activity的子类或现有的子类，一个常规的Activity的创建包含以下几个步骤：
+ 创建一个Java类。
+ 继承Activity的子类：这个子类可以是我们自己继承Activity写的也可以是现有的Activity的子类。我们继承的是 AppCompatActivity现有子类。
+ 在AndroidManifest.xml 清单文件中声明注册Activity：系统不会识别和运行任何未进行声明的 Activity。在声明注册一个Activity时我们需要用到&amp;lt;activity&amp;gt;标签，&amp;lt;activity&amp;gt;的常用属性如下:
+     属性 说明     android:banner=&amp;ldquo;drawable resource&amp;rdquo; 为Acticity关联项提供扩展图形化横幅的可绘制资源   android:clearTaskOnLaunch=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 为true时用户再次启动任务，会清除其他Activity直接启动应用根Activity,为false不清除,默认为false   android:colorMode=[ &amp;ldquo;hdr&amp;rdquo; | &amp;ldquo;wideColorGamut&amp;rdquo;] 请求在兼容设备上以广色域模式显示 Activity   android:directBootAware=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] Activity 是否支持直接启动，即其是否可以在用户解锁设备之前运行   android:enabled=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 系统是否可实例化 Activity   android:excludeFromRecents=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 是否应从最近使用的应用列表（即概览屏幕）中排除该 Activity 启动的任务   android:exported=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 表示此元素设置 Activity 是否可由其他应用的组件启动   android:finishOnTaskLaunch=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 每当用户再次启动 Activity 的任务（在主屏幕上选择任务）时，是否应关闭（完成）现有的 Activity 实例   android:hardwareAccelerated=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 是否应为此 Activity 启用硬件加速渲染 —“true”表示应启用，“false”表示不应启用。默认值为“false”   android:icon=&amp;ldquo;drawable resource&amp;rdquo; 指定 Activity 的图标   android:label=&amp;ldquo;string resource&amp;rdquo; 一种可由用户读取的 Activity 标签。在必须向用户呈现 Activity 时，屏幕上会显示此标签。此标签通常与 Activity 图标一并显示   android:launchMode=[&amp;ldquo;standard&amp;rdquo; | &amp;ldquo;singleTop&amp;rdquo; |&amp;ldquo;singleTask&amp;rdquo; | &amp;ldquo;singleInstance&amp;rdquo;] 有关应如何启动 Activity 的指令   android:name=&amp;ldquo;string&amp;rdquo; 实现 Activity 的类的名称，是 Activity 的子类。此属性值应为完全限定类名称   android:noHistory=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 当用户离开 Activity 且屏幕上不再显示该 Activity 时，是否应从 Activity 堆栈中将其移除并完成（调用其 finish() 方法）默认为 false   android:parentActivityName=&amp;ldquo;string&amp;rdquo; Activity 逻辑父项的类名称。   android:resizeableActivity=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 指定应用是否支持多窗口显示。   android:screenOrientation=[&amp;ldquo;unspecified&amp;rdquo; | &amp;ldquo;behind&amp;rdquo; |&amp;ldquo;landscape&amp;rdquo; | &amp;ldquo;portrait&amp;rdquo; |&amp;ldquo;reverseLandscape&amp;rdquo; | &amp;ldquo;reversePortrait&amp;rdquo; |&amp;ldquo;sensorLandscape&amp;rdquo; | &amp;ldquo;sensorPortrait&amp;rdquo; |&amp;ldquo;userLandscape&amp;rdquo; | &amp;ldquo;userPortrait&amp;rdquo; |&amp;ldquo;sensor&amp;rdquo; | &amp;ldquo;fullSensor&amp;rdquo; | &amp;ldquo;nosensor&amp;rdquo; |&amp;ldquo;user&amp;rdquo; | &amp;ldquo;fullUser&amp;rdquo; | &amp;ldquo;locked&amp;rdquo;] Activity 在设备上的显示方向。   android:theme=&amp;ldquo;resource or theme&amp;rdquo; 对定义 Activity 总体主题的样式资源的引用   android:windowSoftInputMode=[&amp;ldquo;stateUnspecified&amp;rdquo;, &amp;ldquo;stateUnchanged&amp;rdquo;, &amp;ldquo;stateHidden&amp;rdquo;,&amp;ldquo;stateAlwaysHidden&amp;rdquo;, &amp;ldquo;stateVisible&amp;rdquo;, &amp;ldquo;stateAlwaysVisible&amp;rdquo;, &amp;ldquo;adjustUnspecified&amp;rdquo;,&amp;ldquo;adjustResize&amp;rdquo;, &amp;ldquo;adjustPan&amp;rdquo;] Activity 的主窗口与包含屏幕软键盘的窗口之间的交互方式    &amp;lt;activity&amp;gt; 标签应为&amp;lt;application&amp;gt;标签的子标签，下面是一个AndroidManifest.</description>
+    </item>
+    
+    <item>
+      <title>2. Tomcat的安装配置</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 03 Feb 2019 18:15:52 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <description># []()Tomcat安装与配置
+上一小节理解了web服务器的工作原理，继续下面的学习我们需要安装一个 web服务器。我们选用的是Tomcat web服务器，下面先开始安装Tomcat：
+！提示：安装运行 Tomcat 需要有 Java 环境
+1.下载 Tomcat
+官网：https://tomcat.apache.org/
+如下图所示，选择相应版本!
+我选择的是 Tomcat8，点击链接后，选择Core目录下的版本，如下图。
+其中的两个版本：32-bit/64-bit windows zip(pgp,sha512)，不需要安装。可根据机器选择32位还是64位，32-bit/64-bit Windows Service Installer (pgp, sha512) 是需要安装的版本，我选择的是不需要安装的版本。下载完成解压后文件目录如下。
+运行 bin 里面的 startup.bat 文件，运行成功且窗口未关闭就配置成功了一半。如下图所示。
+接下来在浏览器地址栏输入 http://localhost:8080/ ,Tomcat 的默认端口是8080端口，如果浏览器出现以下页面就算是配置成功了。
+最后更新一个问题，应该有许多人配置好后，控制台输出的中文可能会乱码，需要更改注册表数据，在 HKEY_CURRENT_USER\Console\Tomcat 注册表目录下更改 Tomcat CodePage 项（没有创建一个）的值更改为10进制的65001，之后重启 Tomcat 就解决了。
+~~</description>
+    </item>
+    
+    <item>
+      <title>3. Minimum-Spanning-Tree</title>
+      <link>https://compass-ak.gitee.io/algorithms/graphs/mst/</link>
+      <pubDate>Tue, 21 Jul 2020 20:51:30 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/graphs/mst/</guid>
+      <description>最小生成树 讨论最小生成树要基于一种叫 加权图 的图模型。加权图的 加权 的含义是为图的每一条边关联一个权值或是成本。这种图相比于无向图可以更细致的描述问题。在一幅航空图中，边表示航线，权值则可以表示距离或是费用。在一幅电路图中，边表示导线，权值则可能表示导线的长度即成本，或是信号通过这条线路所需的时间。我们可以根据这些信息设计算法计算出最合适的航线，设计一个线路规划最良好的线路。
+而 最小生成树(Minimum-Spanning-Tree) 和解决上述一类问题有着密切的联系，图的 生成树 是它的一颗含有其所有顶点的无环连通子图。 最小生成树 是所有边的权值之和最小的那颗生成树。 值得一提的是边的权值为了适应更多的问题是允许为负数的。
+1. 加权无向图数据类型 表示加权无向图有多种方法，可以使用前面几篇文章中无向图的方法，只需要在结点中增加一个权值属性。 但是由于加权无向图中对边的操作非常频繁，所以会做一些小改动，邻接表存放的不是结点而是一个个边（Edge）对象。根据加权无向图中边的定义，描述它需要三个属性：一个顶点，另一个顶点，权重。以及实现重写一些必要的方法。具体如下：
+public class Edge { private final int v; // 顶点之一 private final int w; // 另一个顶点 private final double weight; // 边的权重 public Edge(int v, int w, double weight) { this.v = v; this.w = w; this.weight = weight; } public double weight() { return weight; } public int either() { return v; } public int other(int vertex) { if (vertex == v) return w; else if (vertex == w) return v; else throw new RuntimeException(&amp;quot;Inconsistent edge&amp;quot;); } public String toString() { return String.</description>
+    </item>
+    
+    <item>
+      <title>3. Red-Black-BST</title>
+      <link>https://compass-ak.gitee.io/algorithms/searching/%E7%BA%A2%E9%BB%91%E6%A0%91/</link>
+      <pubDate>Sun, 14 Jun 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/searching/%E7%BA%A2%E9%BB%91%E6%A0%91/</guid>
+      <description>红黑二叉查找树 -图片资料来自 Algorithms, 4th Edition
+基于二叉查找树的查找和插入算法已经可以应用在许多的用例特定的应用程序上，但是在最坏的情况下，其结构退化为链表的性能急剧降低。这是让人无法容忍的。
+由于二叉查找树的查询性能依赖于树的形态，如果可以找到一种方法可以让二叉查找树无论如何构造，都可以处于一个平衡的状态。我们就可以在更多的情况下应用二叉查找树的高效查找和插入等操作。
+在理想情况下我们希望二叉查找树能在每次插入，删除等操作后都保持一个完美的平衡状态。在一颗含有N个结点的二叉查找树中，树高为lgN。这样就可以保证在lgN次比较内查询到元素，达到二分查找的性能。
+但是实际情况是，在动态的插入和删除等操作中保持二叉查找树的完美平衡的代价太高了，我们需要降低要求，让二叉查找树保持一个接近于完美平衡的状态。这就是红黑二叉查找树。
+1. 2-3查找树 学习红黑二叉查找树之前，我们需要先了解2-3查找树，它可以让我们更好的了解红黑二叉查找树保持树平衡的原理。
+在一般情况下，我们将一颗标准二叉查找树上的结点称为：2-结点（含有一个键和两条链接）。为了保持树的平衡性，在一颗2-3查找树中还含有：3-结点（含有两个键三条链接）,左链接指向的 2-3 树中的键都小于该结点，中链接指向的 2-3 树中的键都位于该结点的两个键之间，右链接指向的 2-3树中的键都大于该结点。下图所示就是一颗2-3查找树。
+2-3 树
+了解2-3查找树的基本结构后，我们进一步学习分析2-3查找树如何完成二叉查找树的各项功能，以及其保持树的完美平衡的方法。
+1.1 查找
+2-3查找树的查找算法与二叉查找树基本类似，只是2-3树会多一些判断，只要将二叉查找树的查找算法一般化我们就可以得到2-3查找树的算法。判断一个键是否在2-3查找树中的基本流程为：
+ 将查找键与根结点中的键比较，如果它与其中任意一个是等，查找命中。
+ 若未命中，根据比较结果确定查找键对应的区间，根据区间的链接找到子树继续递归的查找。
+ 如果链接最后为空链接，则查询未命中。
+  1.2 向2-结点插入新键
+在二叉查找树中，进行一个插入操作首先会进行一次未命中查找。然后将新结点插入到树的底部，这样就有可能破坏树的平衡性。
+而在一颗2-3查找树中，如果查找未命中结束于一个2-结点。我们只需要将2-结点替换为3-结点。将需要插入的键保存在其中即可，如下图所示。
+向2-结点插入新键
+1.3 向3-结点插入新键
+向3-结点中插入新键就比向2-结点中插入新键要更复杂一些，因为3-结点已经含有了两个键没有插入空间了。但是为了将新键插入，我们可以键该键临时的存入该结点中,该结点就成为了一个4-结点（含有3个键4条链接）。由于4-结点是临时的，我们必须将它分解变换成2-结点或3-结点，一颗4-结点很容易转换成一颗由3个2-结点构成的2-3查找树。原4-结点中的中间结点成为此树的根节点。这颗树既是一个3个结点的二叉树，也是一颗完美平衡的2-3树。转换的过程揭示了一颗2-3树是如何 “生长” 的。具体如下图所示。
+向3-结点插入新键
+1.4 向一个父结点是2-结点的3-结点中插入新键
+假设一次插入的未命中查找操作结束于一个3-结点，且它的父结点是一颗2-结点。在这种情况下我们需要保持树的完美平衡的前提下，将新键插入。我们可以像在1.3节中描述的一样，将3-结点临时的转换为一个4-结点，但是此时我们不能直接将4-结点分解为2-结点，因为此操作会破坏2-3树的完美平衡。我们将4-结点的中键上移存入原来父结点中。其他两个键分解为2个2-结点，连接在父结点原中键两端的链接上。由于原来的父结点是2-结点有插入空间，可以直接将中键插入到此结点中。经过此操作2-3树任是完美平衡的，所有的空链接到根结点的距离仍然相等，具体过程如下图所示。
+向一个父结点是2-结点的3-结点中插入新键
+1.5 向一个父结点是3-结点的3-结点中插入新键
+假设一次插入的未命中查询操作结束于一个父结点为3-结点的3结点中。和1.4一样我们先构造一个临时的4-结点，然后将它的中键移动到父结点中。但是父结点也是一个3-结点，因此我们需要再次构建一个临时4-结点，然后进行相同的变换，分解结点并将中键移动到父结点中。如果路径上的结点除开根结点全部都是3-结点，我们就需要一直重复构建和分解临时的4-结点，将中键插入更高层的父结点中。直到最后达到根结点。具体过程如下图所示。
+向一个父结点是3-结点的3-结点中插入新键
+1.6 分解根结点
+如果从插入结点到到根节点全部都是3-结点，在经历数次变换后根结点最后会变换成一个临时的4-结点。此时我们就可以直接将4-结点直接分解为3个2-结点，它的中键变成新的根节点，左右两个键连接在新的根结点的左右链接上。操作完成后树高加1，如下图所示。显而易见此次变换的仍保持了2-3树的完美平衡性。
+分解根结点
+1.7 全局性质
+将一个 4- 结点分解为一棵 2-3 树可能有 6 种情况，都总结在了图 3.3.8 中。这个 4- 结点可能是根结点，可能是一个 2- 结点的左子结点或者右子结点，也可能是一个 3- 结点的左子结点、中子结点或者右子结点。 2-3 树插入算法的根本在于这些变换都是局部的：除了相关的结点和链接之外不必修改或者检查树的其他部分。每次变换中，变更的链接数量不会超过一个很小的常数。每个变换都会将 4- 结点中的一个键送入它的父结点中，并重构相应的链接而不必涉及树的其他部分。</description>
+    </item>
+    
+    <item>
+      <title>3. Heap-Sort</title>
+      <link>https://compass-ak.gitee.io/algorithms/sorting/%E5%A0%86%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Tue, 19 May 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/sorting/%E5%A0%86%E6%8E%92%E5%BA%8F/</guid>
+      <description>堆排序 1. 优先队列 学习堆排序前，需要先了解优先队列是什么东西，引出数据结构：堆，最后学习堆排序。优先队列和普通的队列一样是一种数据结构，普通队列遵循的原则就是先进先出（FIFO）。而优先队列则是无论入队顺序，当前队列中优先级最高的元素先出。谈到优先级就有两种确定优先级的策略，一是值小的优先级高，二是值大的优先级高。这也就把优先队列分为了两种：
+ 最大优先队列：无论入队顺序，当前队列中最大的元素出队列。
+ 最小优先队列：无论入队顺序，当前队列中最小的元素出队列。
+  由于二者实现原理类似，下面的优先队列默认是最大优先队列。
+2. 初级实现 在还不知道堆之前，我们用一般的数据结构去实现优先队列也是可行的，但是由于数据结构的限制，算法的性能可能是比较低的。
+1. 基于无序数组实现
+使用无序的数组在插入元素时，可以添加任意添加到数组中一个空位置。在取出最大元素时需要遍历一遍数组找出最大元素，让其与边界元素交换位置然后删除出队。可以添加代码自动的调整数组大小防止元素溢出。
+2. 基于有序数组实现
+在插入每一个新元素时，将比它大的元素都右移一位然后将其插入数组来保持数组的有序性（插入排序）。这样数组中最大的元素总是在数组的最右边，每次让元素出队列直接选择最右边的元素就完了。
+当然上述的两种实现用链表也能实现。基于链表实现在插入，移动元素时有一定的优势，但是在遍历数组时没有数组的效率高，在此不再赘述。
+在对于普通队列或栈的实现时，我们使用数组实现，能够使其所有操作都在常数时间内完成。而上述两种初级实现方法，插入元素或删除最大元素的两种操作之一在最坏情况下需要线性的时间来完成，这显然是不怎么好的。而堆这种数据结构能好的实现优先队列，可以将插入元素，删除最大元素消耗的时间降低至对数级，如下表所示（log默认以2为底）。
+   数据结构 插入元素 删除最大元素     有序数组 N 1   无序数组 1 N   堆 logN logN   理想情况 1 1    3. 堆的定义 堆在逻辑结构上是一个完全二叉树，所以有时堆也被称为二叉堆。下面介绍几个概念：
+1. 满二叉树：在每一层上的节点数都达到了最大值，即在第 i 层的节点应为2^(i-1)个节点。
+2. 完全二叉树：一棵深度为k的有n个结点的二叉树，对树中的结点按从上至下、从左到右的顺序进行编号，如果编号为i（1≤i≤n）的结点与满二叉树中编号为i的结点在二叉树中的位置相同，则这棵二叉树称为完全二叉树。也就是说，一颗满二叉树，或缺失掉右下角一部分节点的满二叉树就是一颗完全二叉树。
+3. 当一棵二叉树的每个结点都大于等于它的两个子结点时，它被称为堆有序。 不难看出在一课堆有序的二叉树中，最大的元素就是二叉树的根节点。
+4. 堆的表示
+在一般情况下我们表示一颗二叉树都需要在每一个元素中放置3个指针，一个是指向父节点，另外两个指向其两个子节点，方便我们操作二叉树的元素。但是由于堆是一颗完全二叉树，事情就简化了许多，我们仅使用一个数组就可以表示一个堆: 我们将整个堆按层级顺序放置到一个数组中，根节点在位置1，根节点左子节点在位置2，右子节点在位置3，依次类推 。这样放置后我们可以容易的得到结论：在一个数组表示堆中，位置 k 的结点的父结点的位置为k/2，而它的两个子结点的位置则分别为 2k 和 2k+1。 这样我们在不使用指针的情况下，也可以找到一个节点的父节点，以及其两个子节点。而且也大幅提高了查找元素的性能。</description>
+    </item>
+    
+    <item>
+      <title>3. Mybatis映射器2</title>
+      <link>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E6%98%A0%E5%B0%84%E5%99%A82/</link>
+      <pubDate>Tue, 17 Sep 2019 17:02:15 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E6%98%A0%E5%B0%84%E5%99%A82/</guid>
+      <description>Mybatis 映射器中除了实现增删改查的四大标签元素，还有一些辅助的标签元素来让程序更好更便捷的与数据库交互。分别为：, , , 。其中 resultMap是映射器中最重要最强大的的标签元素，需要多一些的篇幅来记录它，这篇博客先记录其他的三个元素。
+1. &amp;lt;sql&amp;gt;元素  标签元素可以用来定义一段 Sql 代码段，这些代码可以被包含在其他标签元素内的 Sql 语句中。更重要的是，它可以在加载时被静态的设置参数，在被不同的语句包含时可以设置不同的参数到参数占位符上。例如：
+&amp;lt;sql id=&amp;quot;userColumns&amp;quot;&amp;gt; ${user}.id,${user}.username,${user}.password &amp;lt;/sql&amp;gt; &amp;lt;/sql&amp;gt;  #{ }是预编译处理，MyBatis在处理#{ }时，它会将sql中的#{ }替换为？，然后调用PreparedStatement的set方法来赋值；\${ }是字符串替换， MyBatis在处理\${ }时,它会将sql中的\${ }替换为变量的值。使用${ }可能会导致sql注入，不利于系统的安全性！
+这样声明后这个 Sql 语句就可以就可以被包含在其他标签下的 Sql 语句中了。例如：
+&amp;lt;select id=&amp;quot;selectUsers&amp;quot; resultType=&amp;quot;map&amp;quot;&amp;gt; select &amp;lt;include refid=&amp;quot;userColumns&amp;quot;&amp;gt;&amp;lt;property name=&amp;quot;user&amp;quot; value=&amp;quot;u1&amp;quot;/&amp;gt;&amp;lt;/include&amp;gt;, &amp;lt;include refid=&amp;quot;userColumns&amp;quot;&amp;gt;&amp;lt;property name=&amp;quot;user&amp;quot; value=&amp;quot;u2&amp;quot;/&amp;gt;&amp;lt;/include&amp;gt; from some_table u1 cross join some_table u2 &amp;lt;/select&amp;gt;  2. 缓存元素 Mybatis 内置了一个强大的事务查询缓存机制，可以非常方便的配置和定制。在默认情况下，Mybatis 只启用了本地的会话缓存，仅对一个会话中的数据进行缓存。若需要启用全局二级缓存，只需要在映射器文件中添加一行：
+&amp;lt;cache/&amp;gt;  添加这一个标签元素后，会起到如下效果：
+ 映射语句文件中的所有 select 语句的结果将会被缓存。 映射语句文件中的所有 insert、update 和 delete 语句会刷新缓存。 缓存会使用最近最少使用算法（LRU, Least Recently Used）算法来清除不需要的缓存。 缓存不会定时进行刷新（也就是说，没有刷新间隔）。 缓存会保存列表或对象（无论查询方法返回哪种）的 1024 个引用。 缓存会被视为读/写缓存，这意味着获取到的对象并不是共享的，可以安全地被调用者修改，而不干扰其他调用者或线程所做的潜在修改。  缓存只作用于 cache 标签所在的映射文件中的语句。如果你混合使用 Java API 和 XML 映射文件，在共用接口中的语句将不会被默认缓存。你需要使用 @CacheNamespaceRef 注解指定缓存作用域。</description>
+    </item>
+    
+    <item>
+      <title>3. Activity状态的保存</title>
+      <link>https://compass-ak.gitee.io/android/activity/activity%E7%8A%B6%E6%80%81%E7%9A%84%E4%BF%9D%E5%AD%98/</link>
+      <pubDate>Mon, 09 Sep 2019 21:29:43 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/android/activity/activity%E7%8A%B6%E6%80%81%E7%9A%84%E4%BF%9D%E5%AD%98/</guid>
+      <description>1. Activity的状态 在Android系统中运行的Activity基本上以下面三种状态存在。
+ 继续 ：此时 Activity 位于屏幕前台并具有用户焦点。（有时也将此状态称作“运行中”。）
+ 暂停 ：另一个 Activity 位于屏幕前台并具有用户焦点，但此 Activity 仍可见。也就是说，另 一个 Activity 显示在此 Activity 上方，并且该 Activity 部分透明或未覆盖整个屏幕。 暂停的 Activity 处于完全活动状态（Activity 对象保留在内存中，它保留了所有状态和 成员信息，并与窗口管理器保持连接），但在内存极度不足的情况下，可能会被系统终止。
+ 停止 ：该 Activity 被另一个 Activity 完全遮盖（该 Activity 目前位于“后台”）。 已停止的 Activity 同样仍处于活动状态（Activity 对象保留在内存中，它保留了所有状态和成员信息，但未与窗口管理器连接）。 不过，它对用户不再可见，在他处需要内存时可能会被系统终止。
+  如果 Activity 处于暂停或停止状态，系统可通过要求其结束（调用其 finish() 方法）或直接终止其进程，将其从内存中删除。（将其结束或终止后）再次打开 Activity 时，必须重建。
+2. Activity的状态信息的保存 当一个Activity短时间处于暂停或停止状态时，Android系统会会自动保存其状态信息。当用户切换回到此Activity时，Activity的状态信息就会被恢复。但是就如上文说所，当系统急需内存的情况下，Activity就会被销毁，再访问该Activity，访问的就会是一个重建的Activity。如果你没有保存它的状态信息，那么会给用户不良的体验。为了提升App的用户体验就需要保存当前Activity中控件的信息。
+2.1 与Activity状态信息保存的方法  onSaveInstanceState() ：系统在将要销毁一个Activity，会先调用它这个方法。系统会向该方法传递一个 Bundle，您可以在其中使用 putString() 和 putInt() 等方法以名称-值对形式保存有关 Activity 状态的信息。然后，如果系统终止您的应用进程，并且用户返回您的 Activity，则系统会重建该 Activity，并将 Bundle 同时传递给 onCreate() 和 onRestoreInstanceState()。</description>
+    </item>
+    
+    <item>
+      <title>3. Tomcat服务器目录结构</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sun, 03 Feb 2019 21:26:41 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid>
+      <description>## []()Tomcat服务器目录结构
+如下图所示：
+我们看到的目录
+目录存放文件主要功能图：
+图片素材来自百度，侵删。</description>
+    </item>
+    
+    <item>
+      <title>4. Shortest Path</title>
+      <link>https://compass-ak.gitee.io/algorithms/graphs/sp/</link>
+      <pubDate>Fri, 24 Jul 2020 19:03:39 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/graphs/sp/</guid>
+      <description>最短路径 在简单的无向图模型中，我们使用 广度优先搜索 可以找到一个顶点到另一个顶点的最短路径（含顶点最少）。但是在加权图中情况有了很大的不同，需要考虑边的权重，这也更贴合许多实际问题。在加权图中的最短路径又可以理解为：找到从一个顶点到达另一个顶点的成本最小的路径。
+为了能够解决更多的实际问题，方便提取问题的抽象模型。我们讨论最短路径基于的图模型一定要具有一般性，考虑更多的变量。也就是加权有向图模型，每一条路径都是有向的，而且有一个和路径关联的权重。
+1. 加权有向图数据结构 考虑到加权有向图于有向图有一定类似，而且边具有权重，会有很多对边的操作，需要像有向图那样将边抽象实现。有向边的数据结构比无向边简单很多，因为边只有一个方向，指定一个顶点为起点，另一个为终点就行了。加权有向边的具体实现如下：
+DirectedEdge
+public class DirectedEdge { private final int v; // 边起点 private final int w; // 边终点 private final double weight; // 边权重 public DirectedEdge(int v, int w, double weight) { this.v = v; this.w = w; this.weight = weight; } public double weight(){ return weight; } public int from(){ return v; } public int to(){ return w; } public String toString() { return String.</description>
+    </item>
+    
+    <item>
+      <title>4. Hash-Tables</title>
+      <link>https://compass-ak.gitee.io/algorithms/searching/%E6%95%A3%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Mon, 06 Jul 2020 18:12:57 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/searching/%E6%95%A3%E5%88%97%E8%A1%A8/</guid>
+      <description>散列表 使用基于红黑二叉查找树实现的查找算法，在平均情况下可以达到logN的效率。算法时间复杂度中，最小最优的就是常数级别的复杂度。有没有一种算法可以突破logN的查询复杂度到达常数级别的效率？答案就是散列表（Hash-Tables）
+使用散列表需要将键转化为数组的索引，进而使用这个索引实现对数组中键值对的快速访问。这就产生了两个需要解决的问题：
+ 怎么由键转化为数组索引；
+ 如何处理转化后索引的冲突。
+  将键转化为数组的索引需要一个 散列函数 ， 散列函数 的理想目的是将可能用例的不同的键都可以转化为不同的索引值。但是这样的散列函数目前是不存在的，所以转化时一定会出现索引冲突的情况，也就是多个键转化后对应一个索引值。在散列查找中解决索引冲突一般使用两种方法： 拉链法 和 线性探测法 。
+1. 散列函数 散列函数用于解决上述第一个问题，将键转化为数组索引。如果我们有一个长度为M的数组用于存储键值对，那么我们就需要一个可以将任意键值转化为该数组的索引范围（ [0, M-1] ）内整数的 散列函数 。散列函数应该是能使所有键分布均匀且易于计算。
+散列函数的设计与键的类型有很大的关系。确切的说，对于每一种类型的键我们都需要寻找一个与之对应的散列函数。
+1.1 正整数
+将整数散列最常用的方法是： 除留余数法 。选择一个大小的为素数 M 的数组，对于任意的整数键 k，计算 k 除 M 的余数作为在数组中的索引。此散列函数能很有效的将键散布在 [0，M-1] 的范围内。选取素数是因为其特殊的数学性质能更好的将键散列，选取其他数（最坏的情况是：如果键是10进制数而数组的大小为10^k，那么散列函数就只能利用到键的后K位数）可能会产生很多的索引冲突。
+1.2 浮点数
+如果键是一个 0 到 1 之间的浮点数，我们可以将其乘以 M 后四舍五入得到一个整数作为其的索引值。此方法便于理解和计算，但是浮点数小数的低位对散列结果的影响没有高位的大。在一些特殊情况：浮点数小数的高位都一样而低位不同，散列的情况就可能非常的糟糕。解决这个问题的方法是将键转化为二进制表示，然后再使用除留取余法。
+1.3 字符串
+对于字符串这种一般较长的键，也可以使用除留取余法。只需要将字符串当作一个较大的整数就行。具体例子如下：
+int hash = 0; for (int i = 0; i &amp;lt; s.length(); i++) hash = (R * hash + s.</description>
+    </item>
+    
+    <item>
+      <title>4. Mybatis映射器3</title>
+      <link>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E6%98%A0%E5%B0%84%E5%99%A83/</link>
+      <pubDate>Wed, 18 Sep 2019 17:02:15 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E6%98%A0%E5%B0%84%E5%99%A83/</guid>
+      <description>关于 Mybatis 映射器文件的知识点还差一个标签元素，是Mybatis 中最强大的元素，它可以让你从 90% 的 JDBC ResultSets 数据提取代码中解放出来，并在一些情形下允许你进行一些 JDBC 不支持的操作。resultMap的作用就是提供一系列，指定数据库列名与 javaBean 属性名映射关系的方法。涉及的知识点较多，需要用一整篇博客去记录它。
+1. 隐式结果映射(自动映射) 实际上，如果你用 mybatis 开发过小型的项目，你可能没有显示的用到 元素，但是你很有可能隐式的用了它。这正是ResultMap的设计思想，对于简单的语句根本不需要配置显式的结果映射，而对于复杂一点的语句只需要描述它们的关系就行了。就像下面这个例子：
+ javaBean:
+package com.example.model; public class User { private int uid; private String username; private String password;   你只需要在映射器文件中写下如下&amp;lt;select&amp;gt;元素，然后使用你就可以获得一个内涵 User 对象的 List 集合。(前提是数据库列名能与 javaBean 属性一 一对应)
+ &amp;lt;select&amp;gt;标签元素内容
+&amp;lt;select id=&amp;quot;selectUsers&amp;quot; resultType=&amp;quot;com.example.model.User&amp;quot;&amp;gt; select uid, username, password from user where id = #{id} &amp;lt;/select&amp;gt;   在这个获取User对象List集合的过程中，Mybatis 会幕后的创建一个 ResultMap 类对象，在根据属性名将是数据列映射到 javaBean 的属性上。如果列名和属性名不能一 一对应，可以在 SELECT 语句中对列使用别名，亦可以使列于属性相匹配，比如：</description>
+    </item>
+    
+    <item>
+      <title>4. web应用和虚拟目录的映射（web应用部署）</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E5%BA%94%E7%94%A8%E5%92%8C%E8%99%9A%E6%8B%9F%E7%9B%AE%E5%BD%95%E7%9A%84%E6%98%A0%E5%B0%84web%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Tue, 05 Feb 2019 20:45:49 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E5%BA%94%E7%94%A8%E5%92%8C%E8%99%9A%E6%8B%9F%E7%9B%AE%E5%BD%95%E7%9A%84%E6%98%A0%E5%B0%84web%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</guid>
+      <description>## []()web应用和虚拟目录（对外访问目录）的映射（Tomcat）
+当我们开发好一个web应用，想要供外界访问，就必须交给 web服务器来管理 web应用。当然要 web服务器知道这个 web应用就必须按照其要求的方法来部署web应用。首先在开发过程中最常用的是，直接将web应用放在webapps目录下，web服务器会将web应用的文件目录自动映射到虚拟目录（在浏览器地址栏访问web应用的目录，这个过程就叫虚拟目录的映射）。外界直接就可以访问web应用。
+但是在实际部署web应用可能会将web应用和web服务器分开存放，部署web应用不能直接放在webapps目录下就需要用以下2种方法来部署web应用：
+1.在conf目录下的 server.xml中配置部署
+首先需要在server.xml文件的 &amp;lt;host&amp;gt; 标签下创建一个 &amp;lt;Context /&amp;gt; 标签
+&amp;lt;Context path=&#39;虚拟目录&#39; docBase=&#39;web应用实际目录&#39;/&amp;gt;  ！修改 &amp;lt;host&amp;gt; 标签中我appBase属性可以更改web应用的默认目录，默认当然就是webapps。
+设置好保存后web服务器就可以用虚拟目录访问其对应的web应用。
+但是，由于修改了 server.xml 文件需要重启web服务器才会有效果。
+2.在 conf\Catalina\localhost 目录中配置
+在此目录中配置的规则是需要创建一个 .xml 文件，文件的名称就是虚拟目录的名称，其他的配置语法与上述 server.xml 中的配置语法相同，区别就是不用设置 path 属性
+比如我们在此目录下新建一个 a.xml 文件然后在文件内写入：
+&amp;lt;Context docBase=&#39;web应用实际目录&#39;/&amp;gt;  保存后在浏览器地址栏输入：http://localhost:8080/a/1.html 就可以访问到对应web应用里面 1.html 页面内容了。
+如果想要设置多级虚拟目录，只需要在给 .xml 文件命名时用 # 将父目录和子目录隔开就可实现多级虚拟目录。
+而且这种方法与前一种相比，这种方法创建的虚拟映射目录是实时的，也就是说不用重启服务器（和放在webapps里面效果一样）。
+~~最后一小点
+才配好Tomcat没有更改其它配置的话直接访问 ：http://localhost:8080/ 会问到Tomcat的默认web应用的页面（Tomcat 首页），我们怎样才可以修改默认的web应用呢？答案是直接在此目录中创建一个 .xml 文件配置好作为默认 web应用。然后将文件名命名为：ROOT 就成功了。（在server.xml 文件 &amp;lt;host&amp;gt; 标签中创建一个没有设置path属性的 &amp;lt;Context /&amp;gt; 也可以指定默认的web应用）</description>
+    </item>
+    
+    <item>
+      <title>5. Mybatis动态sql</title>
+      <link>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E5%8A%A8%E6%80%81sql/</link>
+      <pubDate>Wed, 18 Sep 2019 17:02:15 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/mybatis/mybatis%E5%8A%A8%E6%80%81sql/</guid>
+      <description>MyBatis 的强大特性之一便是它的动态 SQL。简化了许多我们原本需要在JDBC编程中的一些操作，动态 SQL 元素和 JSTL 或基于类似 XML 的文本处理器相似。在 MyBatis 之前的版本中，有很多元素需要花时间了解。MyBatis 3 大大精简了元素种类，现在只需学习原来一半的元素便可。MyBatis 采用功能强大的基于 OGNL 的表达式来淘汰其它大部分元素。Mybatis动态SQL需要用到的标签元素有：
+ if choose (when, otherwise) trim (where, set) foreach  1. if 元素 例子：
+&amp;lt;select id=&amp;quot;selectAllOrderByTotal&amp;quot; resultType=&amp;quot;bean.Student&amp;quot; parameterType=&amp;quot;bean.StudentExample&amp;quot;&amp;gt; select st.*,sc.javaee,sc.android,sc.s_sql,sc.total from student st,score sc where st.snum=sc.snum &amp;lt;if test=&amp;quot;asc&amp;quot;&amp;gt; order by sc.total asc &amp;lt;/if&amp;gt; &amp;lt;if test=&amp;quot;!asc&amp;quot;&amp;gt; order by sc.total desc &amp;lt;/if&amp;gt; &amp;lt;/select&amp;gt;  在动态SQL中通常需要做的事情就是为查询添加约束条件，像上面的&amp;lt;select&amp;gt;元素就可以根据参数StudentExample 的 asc 属性的真假来判断是使用学生总分升序查询，还是学生总分降序查询。其中&amp;lt;if&amp;gt; 标签的 test 属性指定一个本判断的布尔表达式，实际效果与java或其他语言的if语句类似。相当于 test 指定if括号内的判断条件。
+在使用多个并列&amp;lt;if&amp;gt;判断标签，且其包含的处理语句逻辑互斥时（比如上面的升序，降序的查询处理），需要注意的是一定要保证 test判断条件时互斥的。不然最后执行的SQL语句可能会产生逻辑错误。</description>
+    </item>
+    
+    <item>
+      <title>5. web应用的组织结构 虚拟主机的配置</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E5%BA%94%E7%94%A8%E7%9A%84%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84-%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 07 Feb 2019 23:12:55 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E5%BA%94%E7%94%A8%E7%9A%84%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84-%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/</guid>
+      <description>## []()web应用的组织结构 虚拟主机的配置
+[]()1.web 应用的组织结构 结构及各部分作用如下：
+这里主要介绍一下 web.xml 文件的作用。
+1.设置web应用的首页
+在标签 &amp;lt;web-app&amp;gt; 中的 &amp;lt;welcome-file-list&amp;gt; 标签中新建 &amp;lt;welcome-file&amp;gt; 标签，标签之间放置web应用的首页的名称。也可有多个 &amp;lt;welcome-file&amp;gt; 标签来设置多个备用的首页，优先级按 &amp;lt;welcome-file&amp;gt; 顺序编排。
+~~下面的功能作用后续完善。
+2.命名与定制URL。我们可以为Servlet和JSP文件命名并定制URL,其中定制URL是依赖命名的，命名必须在定制URL前。
+3.定制初始化参数：可以定制servlet、JSP、Context的初始化参数，然后可以再servlet、JSP、Context中获取这些参数值。
+4.指定错误处理页面，可以通过“异常类型”或“错误码”来指定错误处理页面。
+5.设置过滤器：比如设置一个编码过滤器，过滤所有资源
+6.设置监听器
+7.设置会话(Session)过期时间，其中时间以分钟为单位。
+[]()2.虚拟主机的配置（搭建网站） 1.什么是虚拟主机
+一台物理机上搭建多个web站点，每个web站点独立运行，互不干扰，这些站点就是&amp;rdquo;虚拟主机&amp;rdquo;。
+Tomcat 配置虚拟主机需要编辑 Server.xml 文件， &amp;lt;Host&amp;gt; 元素表示一个虚拟主机，想要创建一个虚拟主机， &amp;lt;Host&amp;gt; 标签需放在 &amp;lt;Engine&amp;gt; 标签内，基本属性有，虚拟主机名：name，虚拟主机目录： appBase ，如下是一个配置例子。
+&amp;lt;Host name=&#39;XXXXXXXX&#39; appBase=&amp;quot;XXXXXXXX&amp;quot; unpackWARs=&amp;quot;true&amp;quot; autoDeploy=&amp;quot;true&amp;quot; &amp;lt;/Host&amp;gt;  配置好后启动服务器，若想要用浏览器通过虚拟主机名访问，虚拟主机内的资源。需要在DNS服务器上有此虚拟主机名对应的主机 IP 地址，这就需要去购买域名。
+我们可以更改主机 hosts 文件，体验一下效果。在 hosts 文件中最后加一行，前一部分写主机 ip 后一部分写我们的虚拟主机名，保存后即可在本机的浏览器上访问到虚拟主机名的地址。示例如下：
+#my_hosts Start 127.0.0.1 XXXXXXXXXX  #号是注释</description>
+    </item>
+    
+    <item>
+      <title>6. Tomcat结构体系&amp;配置https连接器</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E9%85%8D%E7%BD%AEhttps%E8%BF%9E%E6%8E%A5%E5%99%A8/</link>
+      <pubDate>Sun, 10 Feb 2019 01:52:08 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E9%85%8D%E7%BD%AEhttps%E8%BF%9E%E6%8E%A5%E5%99%A8/</guid>
+      <description>## []()Tomcat结构体系&amp;amp;配置https连接器
+1.Tomcat结构体系如下图
+2.配置https连接器
+1.生成密钥库是用 keytool 工具，java JDK 内置了keytool工具，如果安装了java jdk环境，就可以直接在 cmd 使用keytool。
+2.用 keytool -genkeypair -keyalg RSA -keystore &amp;quot;test.keystore&amp;quot; 生成密钥库。（生成密钥库的位置在操作系统的用户目录下），各命令含义可用 keytool --help 查询，详细学习操作可参考这位作者写的博客。 （孤傲苍狼：https://www.cnblogs.com/xdp-gacl/p/3750965.html）
+输入代码回车后，需要设置密钥库口令（相当于密钥库的密码），下面你回答问题的答案信息用于生成密钥库。
+3.将keystore文件放在 conf 文件夹内，然后再 server.xml 文件用 &amp;lt;Connector&amp;gt; 元素配置连接器，代码如下：
+&amp;lt;Connector port=&amp;quot;8443&amp;quot; protocol=&amp;quot;HTTP/1.1&amp;quot; SSLEnabled=&amp;quot;ture&amp;quot; maxThreads=&amp;quot;150&amp;quot; scheme=&amp;quot;https&amp;quot; secure=&amp;quot;true&amp;quot; clientAuth=&amp;quot;false&amp;quot; sslProtocol=&amp;quot;TLS&amp;quot; keystoreFile=&amp;quot;conf/test.keystore&amp;quot; keystorePass=&amp;quot;2438675&amp;quot;/&amp;gt;  主要属性–&amp;gt;keystoreFile ：指定密钥库，keystorePass：密钥库口令
+保存重启Tomcat 访问 https://localhost:8443/ 可验证。</description>
+    </item>
+    
+    <item>
+      <title>7. HTTP请求&amp;请求方式</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E8%AF%B7%E6%B1%82%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Sun, 10 Feb 2019 21:38:09 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E8%AF%B7%E6%B1%82%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/</guid>
+      <description>## []()HTTP请求&amp;amp;请求方式
+1.请求的结构如下
+2.请求方式</description>
+    </item>
+    
+    <item>
+      <title>8. HTTP常用请求头</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E5%B8%B8%E7%94%A8%E8%AF%B7%E6%B1%82%E5%A4%B4/</link>
+      <pubDate>Mon, 11 Feb 2019 20:04:14 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E5%B8%B8%E7%94%A8%E8%AF%B7%E6%B1%82%E5%A4%B4/</guid>
+      <description> 1.请求头及其说明    请求头 说明 例子     Accept 用于告诉服务器，浏览器支持的MIME类型 /：支持任何数据类型   Accept-Charset 用于告诉服务器，浏览器可接受的字符集 GB18030，Unicode   Accept-Encoding 用于告诉服务器，浏览器支持的数据压缩格式 gzip ，deflate   Accept-Language 用于告诉服务器，浏览器的语言环境    Host 用于告诉服务器，浏览器想访问的主机名，端口    if-Modified-Since 用于告诉服务器，浏览器缓存该资源的时间    Referer 包含一个URL，用户从该URL代表的页面出发访问当前请求的页面    User-Agent 用于告诉服务器，浏览器的类型    Cookie 这是最重要的请求头信息之一（以后详写）    Connection 表示是否需要持久连接 Keep-Alive   Date 当前时间    Range 请求资源的部分内容(不包括响应头的大小)     </description>
+    </item>
+    
+    <item>
+      <title>9. HTTP响应&amp;常用响应头</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E5%93%8D%E5%BA%94%E5%B8%B8%E7%94%A8%E5%93%8D%E5%BA%94%E5%A4%B4/</link>
+      <pubDate>Tue, 12 Feb 2019 00:52:56 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E5%93%8D%E5%BA%94%E5%B8%B8%E7%94%A8%E5%93%8D%E5%BA%94%E5%A4%B4/</guid>
+      <description>## []()HTTP响应&amp;amp;常用响应头
+1.响应的结构
+2.响应的状态
+3常用响应头
+ 响应头 | 说明 | 例子 ------------------- | ----------------------------------------- | --------------------------- Content-Encoding | 内容的压缩编码格式 | GZIP，deflate Content-Length | 表示内容长度。 | Content-Type | 表示后面的文档属于什么MIME类型。 | text/h323，application/x-001 content-Disposition | 告诉浏览器以下载的方式打开数据 | attachment Date | 当前的GMT时间。 | Expires | 告诉浏览器缓存该资源多长时间，0或-1则是不用缓存。 | Last-Modified | 文档的最后改动时间 | Location | 表示客户应当到哪里去提取文档。 | Refresh | 表示浏览器应该在多少时间之后刷新文档。 | Server | 服务器名字。 | Set-Cookie | 设置和页面关联的Cookie。 | Transfer-Encoding | 告诉浏览器数据的传输格式 | chunked,identity Etag | 对象资源的标记值（一般是资源对象的哈希值），服务器用来判断浏览器缓存的资源是否过期 |  </description>
+    </item>
+    
+    <item>
+      <title>10. servlet开发入门&amp;Eclipse开发Servlet</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8eclipse%E5%BC%80%E5%8F%91servlet/</link>
+      <pubDate>Thu, 14 Feb 2019 02:41:24 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8eclipse%E5%BC%80%E5%8F%91servlet/</guid>
+      <description>## []()servlet开发入门&amp;amp;Eclipse开发Servlet
+1.servlet简介
+Java Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。
+使用 Servlet，您可以收集来自网页表单的用户输入，呈现来自数据库或者其他源的记录，还可以动态创建网页。
+2.Servlet运行过程
+3.Eclipse开发Servlet
+提示！开发web应用需要用Eclipse for J2EE IDE ,安装参考此博客：https://www.cnblogs.com/shootercheng/p/6286213.html
+有关Servlet3.0的特性和与2.0的区别参考这篇博客：https://www.ibm.com/developerworks/cn/java/j-lo-servlet30/index.html
+首先我们要关联Eclipse与Tomcat，打开Eclipse点击 window&amp;gt;&amp;gt;preferences&amp;gt;&amp;gt;server&amp;gt;&amp;gt;Runtime&amp;gt;&amp;gt;environments&amp;gt;&amp;gt; 点击ADD增加 Tomcat 如下图：
+选择后，根据自己的Tomcat版本选择相应版本添加。
+添加之后就可以创建动态web工程了，如下图。
+点击下一步，重点来了！！，之前的博客里面有详写了web应用的结构，我们的的程序编译后的java程序是要放在classes目录下，然而用eclipse创建时会默认放在工程的build目录下，如下图。
+亲自跳坑，亲测有效，如果不更改此路径（output folder）程序运行后会将.class文件编译到build目录下，然后死活无法访问：( 404
+然后点击 finish 创建工程，工程的目录结构如下：
+然后我们写一个小程序来测试一下，用service方法来应答HTTP请求。具体代码如下：
+package web; import java.io.*; import javax.servlet.*; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; @WebServlet(&amp;quot;/S1&amp;quot;) public class Servlet extends HttpServlet { private static final long serialVersionUID = 1L; public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException { OutputStream out = response.</description>
+    </item>
+    
+    <item>
+      <title>11. Servlet 开发的一些细节</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82/</link>
+      <pubDate>Thu, 14 Feb 2019 23:07:56 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82/</guid>
+      <description>## []()Servlet 开发的一些细节
+1.HTTPServlet类简介
+2. url 匹配 servlet 带*号的虚拟目录名的规则：（1）越相似的优先匹配（2） * 号在前面的优先级低于 * 号在后面的（下面是几个栗子）
+3. Servlet的运行
+4.一般情况下我们创建的Servlet都是会在web服务器启动后，用户第一次访问servlet时才会创建 servlet对象，哪我们怎么让servlet 在启动web服务器时启动呢，在Servlet 2.x 时会在 web.xml 里的 &amp;lt;load-on-startup&amp;gt; 元素来设置，而Servlet 3.0 在程序中的 @WebServlet（loadOnStartup=2） 的注释中就可以设置（与上述元素设置等价，数字大小决定优先级，从1开始越小优先级越高）
+！！！经过上面的学习会有可能为了方便而设置虚拟访问路径为（&amp;rdquo;/&amp;ldquo;）,就可以直接访问工程名是访问此时的Servlet，细心的人可能会发现此时工程内的静态web资源无法访问，去查看服务器conf目录下的web.xml文件会发现这样一段代码：
+&amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;jsp&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;org.apache.jasper.servlet.JspServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;fork&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;false&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;xpoweredBy&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;false&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;load-on-startup&amp;gt;3&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;default&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattern&amp;gt;/&amp;lt;/url-pattern&amp;gt; &amp;lt;/servlet-mapping&amp;gt;  一切都明白了，web服务器在启动时会构建一个优先级为1的 Servlet 对象，而且它的虚拟目录就是（&amp;rdquo;/&amp;ldquo;）,这个 Servlet对象就是用来处理用户访问服务器的静态web资源的servlet对象。我们为了图方便而设置的虚拟目录就屏蔽了这个Servlet对象，从而无法访问静态web资源。：）</description>
+    </item>
+    
+    <item>
+      <title>12. Servlet获取表单数据</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sat, 16 Feb 2019 03:46:23 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE/</guid>
+      <description>## []()Servlet获取表单数据
+很多情况下，需要传递一些信息，从浏览器到 Web 服务器，最终到后台程序。浏览器使用两种方法可将这些信息传递到 Web 服务器，分别为 GET 方法和 POST 方法。
+1.GET方法
+GET 方法是默认的从浏览器向 Web 服务器传递信息的方法，它会产生一个很长的字符串，出现在浏览器的地址栏中。信息用？与url分隔&amp;amp;连接，如果您要向服务器传递的是密码或其他的敏感信息，请不要使用 GET 方法。GET 方法有大小限制：请求字符串中最多只能有 1024 个字符。
+这些信息使用 QUERY_STRING 头传递，并可以通过 QUERY_STRING 环境变量访问，Servlet 使用 doGet() 方法处理这种类型的请求。
+2.POST方法
+另一个向后台程序传递信息的比较可靠的方法是 POST 方法。POST 方法打包信息的方式与 GET 方法基本相同，但是 POST 方法不是把信息作为 URL 中 ? 字符后的文本字符串进行发送，而是把这些信息作为一个单独的消息。消息以标准输出的形式传到后台程序，您可以解析和使用这些标准输出。Servlet 使用 doPost() 方法处理这种类型的请求。
+3.使用Servlet获取表单数据
+Servlet 处理表单数据，这些数据会根据不同的情况使用不同的方法自动解析：
+getParameter()：您可以调用 request.getParameter() 方法来获取表单参数的值。 getParameterValues()：如果参数出现一次以上，则调用该方法，并返回多个值，例如复选框。 getParameterNames()：如果您想要得到当前请求中的所有参数的完整列表，则调用该方法。  3.1 表单提交使用GET方法的实例
+使用 servlet 3.0 获得表单数据数据要主要注意以下2点。
+ 1, form 表单的 Action 属性值的目录所指代的 Servlet 应包含工程目录，或直接写Servlet的虚拟映射目录，也就是说 Anction 属性值应为：/工程名/Servlet虚拟映射目录 或 Servlet虚拟映射目录 2，表单 value 值尽量不使用中文，传输后无法解析。 3.</description>
+    </item>
+    
+    <item>
+      <title>13. Servlet Cookies处理</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-cookies%E5%A4%84%E7%90%86/</link>
+      <pubDate>Tue, 26 Feb 2019 22:44:33 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-cookies%E5%A4%84%E7%90%86/</guid>
+      <description>## []()Servlet Cookies处理
+1.Cookies 的主要用途
+Cookies 是存储在客户端计算机上的文本文件，并保留了各种跟踪信息。Cookies最典型的应用是判定注册用户是否已经登录网站，用户可能会得到提示，是否在下一次进入此网站时保留用户信息以便简化登录手续，这些都是Cookies的功用。另一个重要应用场合是“购物车”之类处理。用户可能会在一段时间内在同一家网站的不同页面中选择不同的商品，这些信息都会写入Cookies，以便在最后付款时提取信息。
+2.Cookies 处理的一般流程
+(1). 用户在浏览器页面提交表单数据。
+(2). 服务器根据自己的业务需求，用某些用户的数据生成 cookie 。例如：姓名、年龄或识别号码等。 浏览器将这些信息存储在本地计算机上。
+(3). 当下一次浏览器向 Web 服务器发送任何请求时，浏览器会把这些Cookies 信息发送到服务器，服务器将使用这些信息来识别用户。
+3.Servlet 中和Cookies相关的方法
+ 序号 | 方法 -- | -------------------------------------------------------------------------------------------------- 1 | public void setDomain(String pattern)该方法设置 cookie 适用的域。 2 | public String getDomain()该方法获取 cookie 适用的域，例如 w3cschool.cn。 3 | public void setMaxAge(int expiry)该方法设置 cookie 过期的时间（以秒为单位）。如果不这样设置，cookie 只会在当前 session 会话中持续有效。 4 | public int getMaxAge()该方法返回 cookie 的最大生存周期（以秒为单位），默认情况下，-1 表示 cookie 将持续下去，直到浏览器关闭。 5 | public String getName()该方法返回 cookie 的名称。名称在创建后不能改变。 6 | public void setValue(String newValue)该方法设置与 cookie 关联的值。 7 | public String getValue()该方法获取与 cookie 关联的值。 8 | public void setPath(String uri)该方法设置 cookie 适用的路径。如果您不指定路径，与当前页面相同目录下的（包括子目录下的）所有 URL 都会返回 cookie。 9 | public String getPath()该方法获取 cookie 适用的路径。 10 | public void setSecure(boolean flag)该方法设置布尔值，表示 cookie 是否应该只在加密的（即 SSL）连接上发送。 11 | public void setComment(String purpose)该方法规定了描述 cookie 目的的注释。该注释在浏览器向用户呈现 cookie 时非常有用。 12 | public String getComment()该方法返回了描述 cookie 目的的注释，如果 cookie 没有注释则返回 null。  4.</description>
+    </item>
+    
+    <item>
+      <title>14. Servlet session跟踪</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-session%E8%B7%9F%E8%B8%AA/</link>
+      <pubDate>Wed, 27 Feb 2019 15:11:25 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-session%E8%B7%9F%E8%B8%AA/</guid>
+      <description>## []()Servlet session跟踪
+1.什么是session
+Session 对象存储特定用户会话所需的属性及配置信息。
+一般情况下，session都是存储在服务器内存里，当服务器进程被停止或者重启的时候，内存里的session也会被清空，如果设置了session的持久化特性，服务器就会把session保存到硬盘上，当服务器进程重新启动或这些信息将能够被再次使用， Weblogic Server支持的持久性方式包括文件、数据库、客户端cookie保存和复制。
+2.Tomcat中session的工作原理
+（1） session 的产生，存放
+当浏览器访问服务器时，服务器使用HttpServletRequest的getSession(true)的取得浏览器cookies中的sessionid时，如果没有session对象，也就是浏览器第一次访问服务器，服务器就会生成一个session对象。tomcat的ManagerBase类提供创建sessionid的方法：随机数+时间+jvmid；存储在服务器的内存中，tomcat的StandardManager类将session存储在内存中，也可以持久化到file，数据库，memcache，redis等。客户端只保存sessionid到cookie中，而不会保存session，session销毁只能通过invalidate或超时，关掉浏览器并不会关闭session。
+（2）session 作用
+当用户浏览器cookies中有sessionid的时候，服务器就可以从HttpServletRequest 类对象得到 sessionid，从而查找服务器中的session对象得到用户浏览器的session信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当会话过期或被放弃后，服务器将终止该会话。Session 对象最常见的一个用法就是存储用户的首选项。例如，如果用户指明不喜欢查看图形，就可以将该信息存储在 Session 对象中。
+3.Servlet中与session相关的方法
+ 序号 | 方法 -- | ----------------------------------------------------------------------------------- 1 | public void setAttribute(String name,Object value)将value对象以name名称绑定到会话 2 | public object getAttribute(String name)取得name的属性值，如果属性不存在则返回null 3 | public void removeAttribute(String name)从会话中删除name属性，如果不存在不会执行，也不会抛处错误. 3 | public Enumeration getAttributeNames()返回和会话有关的枚举值 4 | public void invalidate()使会话失效，同时删除属性对象 5 | public Boolean isNew()用于检测当前客户是否为新的会话 6 | public long getCreationTime()返回会话创建时间 7 | public long getLastAccessedTime()返回在会话时间内web容器接收到客户最后发出的请求的时间 8 | public int getMaxInactiveInterval()返回在会话期间内客户请求的最长时间为秒 9 | public void setMaxInactiveInterval(int seconds)允许客户客户请求的最长时间 10 | ServletContext getServletContext()返回当前会话的上下文环境，ServletContext对象可以使Servlet与web容器进行通信 11 | public String getId()返回会话期间的识别号  4.</description>
+    </item>
+    
+    <item>
+      <title>15. ServletContext 对象</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servletcontext-%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Thu, 28 Feb 2019 21:08:53 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servletcontext-%E5%AF%B9%E8%B1%A1/</guid>
+      <description>## []()ServletContext 对象
+参考教程：https://www.w3cschool.cn/servlet/servlet-3ceg2p0t.html
+1.ServletContext 对象简介
+ServletContext是一个全局的储存信息的空间，服务器开始就存在，服务器关闭才释放。为了方便大家理解，我们将ServletContext和Cookie、Session做一个简单对比，如下图：
+我们可以把ServletContext当成一个公用的空间，可以被所有的客户访问，如上图，A、B、C三个客户端都可以访问。
+WEB容器在启动时，它会为每个Web应用程序都创建一个对应的ServletContext，它代表当前Web应用，并且它被所有客户端共享。
+由于一个WEB应用中的所有Servlet共享同一个ServletContext对象，因此Servlet对象之间可以通过ServletContext对象来实现通讯。ServletContext对象通常也被称之为context域对象。公共聊天室就会用到它。
+当web应用关闭、Tomcat关闭或者Web应用reload的时候，ServletContext对象会被销毁。
+2.使用ServletContext对象
+（1）怎么得到 ServletContext对象
+this.getServletContext(); this.ServletConfig().getServletContext();  主要有以上两种方法来获取ServletContext对象。
+（2）使用ServletContext对象
+你可以把它想象成一张表，这个和Session非常相似：每一行就是一个属性
+和其对应的value值，可以用来存储信息。
+添加属性：setAttribute(String name, Object obj); 得到值：getAttribute(String name)，这个方法返回Object 删除属性：removeAttribute(String name)  3.实例
+这个实例演示，一个Servlet向ServletContext对象写入信息。另一个Servlet读取Servlet对象的信息。（Context1写入信息，Context2读取信息）
+Context1代码如下：
+package context; import java.io.IOException; import java.io.PrintWriter; import javax.servlet.ServletContext; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; @WebServlet(&amp;quot;/Context1&amp;quot;) public class Context1 extends HttpServlet { private static final long serialVersionUID = 1L; protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { PrintWriter out = response.</description>
+    </item>
+    
+    <item>
+      <title>16. 日期时间处理</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sun, 03 Mar 2019 01:18:34 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/</guid>
+      <description>## []()日期时间处理
+Servlet 最大的优势就是可以使用 Java 中的大多数可用的方法。处理时间也是非常的方便。处理时间一般是用Date类。首先介绍一下Date类的方法如下：
+1.Date方法
+ 序号 | 方法 -- | ------------------------------------------------------------------------------------------------------------ 1 | boolean after(Date date)如果调用的 Date 对象中包含的日期在 date 指定的日期之后，则返回 true，否则返回 false。 2 | boolean before(Date date)如果调用的 Date 对象中包含的日期在 date 指定的日期之前，则返回 true，否则返回 false。 3 | Object clone( )重复调用 Date 对象。 4 | int compareTo(Date date)把调用对象的值与 date 的值进行比较。如果两个值是相等的，则返回 0。如果调用对象在 date 之前，则返回一个负值。如调用对象在 date 之后，则返回一个正值。 5 | int compareTo(Object obj)如果 obj 是 Date 类，则操作等同于 compareTo(Date)。否则，它会抛出一个 ClassCastException。 6 | boolean equals(Object date)如果调用的 Date 对象中包含的时间和日期与 date 指定的相同，则返回 true，否则返回 false。 7 | long getTime( )返回 1970 年 1 月 1 日以来经过的毫秒数。 8 | int hashCode( )为调用对象返回哈希代码。 9 | void setTime(long time)设置 time 指定的时间和日期，这表示从 1970 年 1 月 1 日午夜以来经过的时间（以毫秒为单位）。 10 | String toString( )转换调用的 Date 对象为一个字符串，并返回结果。  2。格式化时间</description>
+    </item>
+    
+    <item>
+      <title>17. Servlet 实现文件的下载和上传</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E4%B8%8A%E4%BC%A0/</link>
+      <pubDate>Sun, 03 Mar 2019 20:20:02 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E4%B8%8A%E4%BC%A0/</guid>
+      <description>## []()Servlet 实现文件的下载和上传
+1.文件下载
+实现简单的文件下载主要有以下2步：
+1.读取服务器上的资源文件（包括：获取文件所在目录（绝对路径），文件名）
+2.设置响应格式，编码以及HTTP响应头 （HTTP响应头 “content-disposition” 为：&amp;rdquo;attachment;）
+3.向用户浏览器输出资源文件。
+2.文件下载实例
+下面是一个文件下载的Servlet，用户访问此 Servlet 既可以下载一张图片
+获取资源文件的绝对路径可以用 ：this.getServletContext().getRealPath(&amp;rdquo; 文件名 &amp;ldquo;）
+来获取。
+FileDownload.java 文件如下：
+package fileDownload; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.net.URLEncoder; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; @WebServlet(&amp;quot;/FileDownload&amp;quot;) public class FileDownload extends HttpServlet { private static final long serialVersionUID = 1L; protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { String path=this.</description>
+    </item>
+    
+    <item>
+      <title>18. Servlet 网页重定向,控制页面刷新，网站点击量统计</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E7%BD%91%E9%A1%B5%E9%87%8D%E5%AE%9A%E5%90%91%E6%8E%A7%E5%88%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E7%BD%91%E7%AB%99%E7%82%B9%E5%87%BB%E9%87%8F%E7%BB%9F%E8%AE%A1/</link>
+      <pubDate>Mon, 04 Mar 2019 22:45:10 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E7%BD%91%E9%A1%B5%E9%87%8D%E5%AE%9A%E5%90%91%E6%8E%A7%E5%88%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E7%BD%91%E7%AB%99%E7%82%B9%E5%87%BB%E9%87%8F%E7%BB%9F%E8%AE%A1/</guid>
+      <description>版权声明： https://blog.csdn.net/ak_csdno/article/details/88141771
+## []()Servlet 网页重定向,控制页面刷新，网站点击量统计
+1. 网页重定向
+在Servlet中重定向网页主要有以下两种方式：
+（1） 使用response.sendRedirect(String URL) (URL的根目录是web容器，即需要在Servlet的对外访问路径前加上项目名限定，如：/web应用名/Servlet对外访问路径)
+（2）使用 response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY)
+response.setHeader(“location”,“目标URL”) 设置Status和HTTP头重定向网页
+（值得说明的是 SC_MOVED_TEMPORARILY是HttpServletResponse类的静态变量）
+实例
+package servletMIX; import java.io.IOException; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; @WebServlet(&amp;quot;/Redirect&amp;quot;) public class Redirect extends HttpServlet { private static final long serialVersionUID = 1L; protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { // response.sendRedirect(&amp;quot;/Servlet/Date&amp;quot;); //使用response.sendRedirect()方法重定向 response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY); // 设置Status和HTTP头重定向 response.setHeader(&amp;quot;location&amp;quot;, &amp;quot;/Servlet/Date&amp;quot;); } protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { doGet(request, response); } }  运行结果：</description>
+    </item>
+    
+    <item>
+      <title>19. 数据库的连接</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Sun, 14 Apr 2019 14:40:10 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%BF%9E%E6%8E%A5/</guid>
+      <description>#一. 连接 mysql 数据库
+#####1.驱动下载
+下载连接：https://dev.mysql.com/downloads/
+进入页面点击Community，选择下方的MySQL Connectors，选择Connector/J，如下图所示。
+进入页面Select Operating System: 选择Platform Independent ，选择完后页面如下，点击Download即可下载，压缩文件。如下图所示。
+#####2.连接数据库准备
+驱动下载完成解压后，复制根目录下的 ：mysql-connector-java-8.0.15.jar 文件到Web项目的 WEB-INF/lib 目录下。然后鼠标右键项目，选择Build Path 在Libraries 里点击Classpath选择添加 Add JAR 选择项目目录下的 mysql-connector-java-8.0.15.jar 文件添加。
+[]()3.连接数据库 （1.利用反射类加载数据库驱动类：
+mysql 8.x驱动类位置为： com.mysql.cj.jdbc.Driver 中间多了一个 .cj
+**反射加载驱动类： Class.forName(&amp;quot;com.mysql.cj.jdbc.Driver&amp;quot;); **
+**URL： &amp;quot;jdbc:mysql://localhost:3306/数据库名&amp;quot;,User,password **
+（2.实例代码（servlet实现）：
+package mysql; import java.io.IOException; import java.io.PrintWriter; import java.sql.Connection; import java.sql.DriverManager; import java.sql.ResultSet; import java.sql.ResultSetMetaData; import java.sql.SQLException; import java.sql.Statement; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://compass-ak.gitee.io/resume/resume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/resume/resume/</guid>
+      <description> 瞿阿康 / Qu A Kang 个人信息  手机：18586643989
+ Email：quakang@163.com
+ QQ：1442904439
+ 技术博客：https://compassak.github.io/
+ Github：https://github.com/compassak
+ 期望职位：后端开发实习生
+  教育经历  2017.09 - 2021.06 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 天津理工大学 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 软件工程 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 本科  我的技能  熟练使用 Java 语言，熟悉 Java Web 开发流程以及 Spirng，SpringMVC，Mybatis 框架。
+ 熟悉 Mysql 数据库以及 sql 语句的编写。
+ 熟悉常用的数据结构和算法。
+ 熟悉 Python 语言，了解 SpringBoot，Redis。
+  项目经历 校园二手商品交易平台（专业设计）
+ 我的任务：完成用户聊天模块（WebSocket，图片），商品留言模块开发。
+ 难点：查询一个用户的最近会话列表，sql语句冗长且查询效率低（产生原因：数据库设计缺陷）。
+ 解决方法：以空间换时间，新增一张会话表帮助查询。
+  自我评价  有较强的自学能力，对新技术有浓厚的兴趣。做事认真负责，有较强的责任感。  </description>
+    </item>
+    
+  </channel>
+</rss>

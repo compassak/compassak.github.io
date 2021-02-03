@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web 基础 on en</title>
+    <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/</link>
+    <description>Recent content in web 基础 on en</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Jul 2019 22:39:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. web服务器原理（网络程序）</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8E%9F%E7%90%86%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Sun, 03 Feb 2019 13:58:34 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8E%9F%E7%90%86%E7%BD%91%E7%BB%9C%E7%A8%8B%E5%BA%8F/</guid>
+      <description>## []()##web服务器原理 我们现在每天浏览网页，浏览器向服务器发送请求，服务器中的web服务器来处理来至全世界各地的请求信息。web服务器请求并返回文档信息，web服务器的基本原理是怎样的呢？
+我们可以这样分析，web服务器是用来处理请求信息，返回服务器信息资源。处理信息，返回信息。这不就是程序的功能吗？
+没错web服务器就是许多网络程序的集合，下面用一个网络程序例子来深入了解一下web服务器的工作原理，网络程序代码如下。
+package my_java_network_program; import java.net.*; import java.io.*; public class Server { public static void main(String[] args) throws IOException { ServerSocket server=new ServerSocket(8888); Socket sock=server.accept(); FileInputStream in=new FileInputStream(&amp;quot;文件路径\\index.html&amp;quot;); OutputStream out=sock.getOutputStream(); int len=0; byte buffer[]=new byte[1024]; while((len=in.read(buffer))&amp;gt;0) { out.write(buffer,0,len); } in.close(); out.close(); sock.close(); server.close(); } }  程序用的是Java网络编程的知识。运行程序后，在浏览器地址栏输入：http://localhost:8888/ 就可访问文件路径中的 index.html 的网页类容。如果是在另一台机器访问，只需将localhost换成你机器的IP地址就可访问。访问结果如下所示：
+那么，其实web服务器就是向上面的网络程序的集合，来处理发送到服务器的请求信息，并返回信息资源。</description>
+    </item>
+    
+    <item>
+      <title>2. Tomcat的安装配置</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 03 Feb 2019 18:15:52 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E7%9A%84%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <description># []()Tomcat安装与配置
+上一小节理解了web服务器的工作原理，继续下面的学习我们需要安装一个 web服务器。我们选用的是Tomcat web服务器，下面先开始安装Tomcat：
+！提示：安装运行 Tomcat 需要有 Java 环境
+1.下载 Tomcat
+官网：https://tomcat.apache.org/
+如下图所示，选择相应版本!
+我选择的是 Tomcat8，点击链接后，选择Core目录下的版本，如下图。
+其中的两个版本：32-bit/64-bit windows zip(pgp,sha512)，不需要安装。可根据机器选择32位还是64位，32-bit/64-bit Windows Service Installer (pgp, sha512) 是需要安装的版本，我选择的是不需要安装的版本。下载完成解压后文件目录如下。
+运行 bin 里面的 startup.bat 文件，运行成功且窗口未关闭就配置成功了一半。如下图所示。
+接下来在浏览器地址栏输入 http://localhost:8080/ ,Tomcat 的默认端口是8080端口，如果浏览器出现以下页面就算是配置成功了。
+最后更新一个问题，应该有许多人配置好后，控制台输出的中文可能会乱码，需要更改注册表数据，在 HKEY_CURRENT_USER\Console\Tomcat 注册表目录下更改 Tomcat CodePage 项（没有创建一个）的值更改为10进制的65001，之后重启 Tomcat 就解决了。
+~~</description>
+    </item>
+    
+    <item>
+      <title>3. Tomcat服务器目录结构</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sun, 03 Feb 2019 21:26:41 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid>
+      <description>## []()Tomcat服务器目录结构
+如下图所示：
+我们看到的目录
+目录存放文件主要功能图：
+图片素材来自百度，侵删。</description>
+    </item>
+    
+    <item>
+      <title>4. web应用和虚拟目录的映射（web应用部署）</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E5%BA%94%E7%94%A8%E5%92%8C%E8%99%9A%E6%8B%9F%E7%9B%AE%E5%BD%95%E7%9A%84%E6%98%A0%E5%B0%84web%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Tue, 05 Feb 2019 20:45:49 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E5%BA%94%E7%94%A8%E5%92%8C%E8%99%9A%E6%8B%9F%E7%9B%AE%E5%BD%95%E7%9A%84%E6%98%A0%E5%B0%84web%E5%BA%94%E7%94%A8%E9%83%A8%E7%BD%B2/</guid>
+      <description>## []()web应用和虚拟目录（对外访问目录）的映射（Tomcat）
+当我们开发好一个web应用，想要供外界访问，就必须交给 web服务器来管理 web应用。当然要 web服务器知道这个 web应用就必须按照其要求的方法来部署web应用。首先在开发过程中最常用的是，直接将web应用放在webapps目录下，web服务器会将web应用的文件目录自动映射到虚拟目录（在浏览器地址栏访问web应用的目录，这个过程就叫虚拟目录的映射）。外界直接就可以访问web应用。
+但是在实际部署web应用可能会将web应用和web服务器分开存放，部署web应用不能直接放在webapps目录下就需要用以下2种方法来部署web应用：
+1.在conf目录下的 server.xml中配置部署
+首先需要在server.xml文件的 &amp;lt;host&amp;gt; 标签下创建一个 &amp;lt;Context /&amp;gt; 标签
+&amp;lt;Context path=&#39;虚拟目录&#39; docBase=&#39;web应用实际目录&#39;/&amp;gt;  ！修改 &amp;lt;host&amp;gt; 标签中我appBase属性可以更改web应用的默认目录，默认当然就是webapps。
+设置好保存后web服务器就可以用虚拟目录访问其对应的web应用。
+但是，由于修改了 server.xml 文件需要重启web服务器才会有效果。
+2.在 conf\Catalina\localhost 目录中配置
+在此目录中配置的规则是需要创建一个 .xml 文件，文件的名称就是虚拟目录的名称，其他的配置语法与上述 server.xml 中的配置语法相同，区别就是不用设置 path 属性
+比如我们在此目录下新建一个 a.xml 文件然后在文件内写入：
+&amp;lt;Context docBase=&#39;web应用实际目录&#39;/&amp;gt;  保存后在浏览器地址栏输入：http://localhost:8080/a/1.html 就可以访问到对应web应用里面 1.html 页面内容了。
+如果想要设置多级虚拟目录，只需要在给 .xml 文件命名时用 # 将父目录和子目录隔开就可实现多级虚拟目录。
+而且这种方法与前一种相比，这种方法创建的虚拟映射目录是实时的，也就是说不用重启服务器（和放在webapps里面效果一样）。
+~~最后一小点
+才配好Tomcat没有更改其它配置的话直接访问 ：http://localhost:8080/ 会问到Tomcat的默认web应用的页面（Tomcat 首页），我们怎样才可以修改默认的web应用呢？答案是直接在此目录中创建一个 .xml 文件配置好作为默认 web应用。然后将文件名命名为：ROOT 就成功了。（在server.xml 文件 &amp;lt;host&amp;gt; 标签中创建一个没有设置path属性的 &amp;lt;Context /&amp;gt; 也可以指定默认的web应用）</description>
+    </item>
+    
+    <item>
+      <title>5. web应用的组织结构 虚拟主机的配置</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E5%BA%94%E7%94%A8%E7%9A%84%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84-%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 07 Feb 2019 23:12:55 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/web%E5%BA%94%E7%94%A8%E7%9A%84%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84-%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/</guid>
+      <description>## []()web应用的组织结构 虚拟主机的配置
+[]()1.web 应用的组织结构 结构及各部分作用如下：
+这里主要介绍一下 web.xml 文件的作用。
+1.设置web应用的首页
+在标签 &amp;lt;web-app&amp;gt; 中的 &amp;lt;welcome-file-list&amp;gt; 标签中新建 &amp;lt;welcome-file&amp;gt; 标签，标签之间放置web应用的首页的名称。也可有多个 &amp;lt;welcome-file&amp;gt; 标签来设置多个备用的首页，优先级按 &amp;lt;welcome-file&amp;gt; 顺序编排。
+~~下面的功能作用后续完善。
+2.命名与定制URL。我们可以为Servlet和JSP文件命名并定制URL,其中定制URL是依赖命名的，命名必须在定制URL前。
+3.定制初始化参数：可以定制servlet、JSP、Context的初始化参数，然后可以再servlet、JSP、Context中获取这些参数值。
+4.指定错误处理页面，可以通过“异常类型”或“错误码”来指定错误处理页面。
+5.设置过滤器：比如设置一个编码过滤器，过滤所有资源
+6.设置监听器
+7.设置会话(Session)过期时间，其中时间以分钟为单位。
+[]()2.虚拟主机的配置（搭建网站） 1.什么是虚拟主机
+一台物理机上搭建多个web站点，每个web站点独立运行，互不干扰，这些站点就是&amp;rdquo;虚拟主机&amp;rdquo;。
+Tomcat 配置虚拟主机需要编辑 Server.xml 文件， &amp;lt;Host&amp;gt; 元素表示一个虚拟主机，想要创建一个虚拟主机， &amp;lt;Host&amp;gt; 标签需放在 &amp;lt;Engine&amp;gt; 标签内，基本属性有，虚拟主机名：name，虚拟主机目录： appBase ，如下是一个配置例子。
+&amp;lt;Host name=&#39;XXXXXXXX&#39; appBase=&amp;quot;XXXXXXXX&amp;quot; unpackWARs=&amp;quot;true&amp;quot; autoDeploy=&amp;quot;true&amp;quot; &amp;lt;/Host&amp;gt;  配置好后启动服务器，若想要用浏览器通过虚拟主机名访问，虚拟主机内的资源。需要在DNS服务器上有此虚拟主机名对应的主机 IP 地址，这就需要去购买域名。
+我们可以更改主机 hosts 文件，体验一下效果。在 hosts 文件中最后加一行，前一部分写主机 ip 后一部分写我们的虚拟主机名，保存后即可在本机的浏览器上访问到虚拟主机名的地址。示例如下：
+#my_hosts Start 127.0.0.1 XXXXXXXXXX  #号是注释</description>
+    </item>
+    
+    <item>
+      <title>6. Tomcat结构体系&amp;配置https连接器</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E9%85%8D%E7%BD%AEhttps%E8%BF%9E%E6%8E%A5%E5%99%A8/</link>
+      <pubDate>Sun, 10 Feb 2019 01:52:08 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/tomcat%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB%E9%85%8D%E7%BD%AEhttps%E8%BF%9E%E6%8E%A5%E5%99%A8/</guid>
+      <description>## []()Tomcat结构体系&amp;amp;配置https连接器
+1.Tomcat结构体系如下图
+2.配置https连接器
+1.生成密钥库是用 keytool 工具，java JDK 内置了keytool工具，如果安装了java jdk环境，就可以直接在 cmd 使用keytool。
+2.用 keytool -genkeypair -keyalg RSA -keystore &amp;quot;test.keystore&amp;quot; 生成密钥库。（生成密钥库的位置在操作系统的用户目录下），各命令含义可用 keytool --help 查询，详细学习操作可参考这位作者写的博客。 （孤傲苍狼：https://www.cnblogs.com/xdp-gacl/p/3750965.html）
+输入代码回车后，需要设置密钥库口令（相当于密钥库的密码），下面你回答问题的答案信息用于生成密钥库。
+3.将keystore文件放在 conf 文件夹内，然后再 server.xml 文件用 &amp;lt;Connector&amp;gt; 元素配置连接器，代码如下：
+&amp;lt;Connector port=&amp;quot;8443&amp;quot; protocol=&amp;quot;HTTP/1.1&amp;quot; SSLEnabled=&amp;quot;ture&amp;quot; maxThreads=&amp;quot;150&amp;quot; scheme=&amp;quot;https&amp;quot; secure=&amp;quot;true&amp;quot; clientAuth=&amp;quot;false&amp;quot; sslProtocol=&amp;quot;TLS&amp;quot; keystoreFile=&amp;quot;conf/test.keystore&amp;quot; keystorePass=&amp;quot;2438675&amp;quot;/&amp;gt;  主要属性–&amp;gt;keystoreFile ：指定密钥库，keystorePass：密钥库口令
+保存重启Tomcat 访问 https://localhost:8443/ 可验证。</description>
+    </item>
+    
+    <item>
+      <title>7. HTTP请求&amp;请求方式</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E8%AF%B7%E6%B1%82%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Sun, 10 Feb 2019 21:38:09 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E8%AF%B7%E6%B1%82%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F/</guid>
+      <description>## []()HTTP请求&amp;amp;请求方式
+1.请求的结构如下
+2.请求方式</description>
+    </item>
+    
+    <item>
+      <title>8. HTTP常用请求头</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E5%B8%B8%E7%94%A8%E8%AF%B7%E6%B1%82%E5%A4%B4/</link>
+      <pubDate>Mon, 11 Feb 2019 20:04:14 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E5%B8%B8%E7%94%A8%E8%AF%B7%E6%B1%82%E5%A4%B4/</guid>
+      <description> 1.请求头及其说明    请求头 说明 例子     Accept 用于告诉服务器，浏览器支持的MIME类型 /：支持任何数据类型   Accept-Charset 用于告诉服务器，浏览器可接受的字符集 GB18030，Unicode   Accept-Encoding 用于告诉服务器，浏览器支持的数据压缩格式 gzip ，deflate   Accept-Language 用于告诉服务器，浏览器的语言环境    Host 用于告诉服务器，浏览器想访问的主机名，端口    if-Modified-Since 用于告诉服务器，浏览器缓存该资源的时间    Referer 包含一个URL，用户从该URL代表的页面出发访问当前请求的页面    User-Agent 用于告诉服务器，浏览器的类型    Cookie 这是最重要的请求头信息之一（以后详写）    Connection 表示是否需要持久连接 Keep-Alive   Date 当前时间    Range 请求资源的部分内容(不包括响应头的大小)     </description>
+    </item>
+    
+    <item>
+      <title>9. HTTP响应&amp;常用响应头</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E5%93%8D%E5%BA%94%E5%B8%B8%E7%94%A8%E5%93%8D%E5%BA%94%E5%A4%B4/</link>
+      <pubDate>Tue, 12 Feb 2019 00:52:56 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/http%E5%93%8D%E5%BA%94%E5%B8%B8%E7%94%A8%E5%93%8D%E5%BA%94%E5%A4%B4/</guid>
+      <description>## []()HTTP响应&amp;amp;常用响应头
+1.响应的结构
+2.响应的状态
+3常用响应头
+ 响应头 | 说明 | 例子 ------------------- | ----------------------------------------- | --------------------------- Content-Encoding | 内容的压缩编码格式 | GZIP，deflate Content-Length | 表示内容长度。 | Content-Type | 表示后面的文档属于什么MIME类型。 | text/h323，application/x-001 content-Disposition | 告诉浏览器以下载的方式打开数据 | attachment Date | 当前的GMT时间。 | Expires | 告诉浏览器缓存该资源多长时间，0或-1则是不用缓存。 | Last-Modified | 文档的最后改动时间 | Location | 表示客户应当到哪里去提取文档。 | Refresh | 表示浏览器应该在多少时间之后刷新文档。 | Server | 服务器名字。 | Set-Cookie | 设置和页面关联的Cookie。 | Transfer-Encoding | 告诉浏览器数据的传输格式 | chunked,identity Etag | 对象资源的标记值（一般是资源对象的哈希值），服务器用来判断浏览器缓存的资源是否过期 |  </description>
+    </item>
+    
+    <item>
+      <title>10. servlet开发入门&amp;Eclipse开发Servlet</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8eclipse%E5%BC%80%E5%8F%91servlet/</link>
+      <pubDate>Thu, 14 Feb 2019 02:41:24 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8eclipse%E5%BC%80%E5%8F%91servlet/</guid>
+      <description>## []()servlet开发入门&amp;amp;Eclipse开发Servlet
+1.servlet简介
+Java Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器或其他 HTTP 客户端的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。
+使用 Servlet，您可以收集来自网页表单的用户输入，呈现来自数据库或者其他源的记录，还可以动态创建网页。
+2.Servlet运行过程
+3.Eclipse开发Servlet
+提示！开发web应用需要用Eclipse for J2EE IDE ,安装参考此博客：https://www.cnblogs.com/shootercheng/p/6286213.html
+有关Servlet3.0的特性和与2.0的区别参考这篇博客：https://www.ibm.com/developerworks/cn/java/j-lo-servlet30/index.html
+首先我们要关联Eclipse与Tomcat，打开Eclipse点击 window&amp;gt;&amp;gt;preferences&amp;gt;&amp;gt;server&amp;gt;&amp;gt;Runtime&amp;gt;&amp;gt;environments&amp;gt;&amp;gt; 点击ADD增加 Tomcat 如下图：
+选择后，根据自己的Tomcat版本选择相应版本添加。
+添加之后就可以创建动态web工程了，如下图。
+点击下一步，重点来了！！，之前的博客里面有详写了web应用的结构，我们的的程序编译后的java程序是要放在classes目录下，然而用eclipse创建时会默认放在工程的build目录下，如下图。
+亲自跳坑，亲测有效，如果不更改此路径（output folder）程序运行后会将.class文件编译到build目录下，然后死活无法访问：( 404
+然后点击 finish 创建工程，工程的目录结构如下：
+然后我们写一个小程序来测试一下，用service方法来应答HTTP请求。具体代码如下：
+package web; import java.io.*; import javax.servlet.*; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; @WebServlet(&amp;quot;/S1&amp;quot;) public class Servlet extends HttpServlet { private static final long serialVersionUID = 1L; public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException { OutputStream out = response.</description>
+    </item>
+    
+    <item>
+      <title>11. Servlet 开发的一些细节</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82/</link>
+      <pubDate>Thu, 14 Feb 2019 23:07:56 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82/</guid>
+      <description>## []()Servlet 开发的一些细节
+1.HTTPServlet类简介
+2. url 匹配 servlet 带*号的虚拟目录名的规则：（1）越相似的优先匹配（2） * 号在前面的优先级低于 * 号在后面的（下面是几个栗子）
+3. Servlet的运行
+4.一般情况下我们创建的Servlet都是会在web服务器启动后，用户第一次访问servlet时才会创建 servlet对象，哪我们怎么让servlet 在启动web服务器时启动呢，在Servlet 2.x 时会在 web.xml 里的 &amp;lt;load-on-startup&amp;gt; 元素来设置，而Servlet 3.0 在程序中的 @WebServlet（loadOnStartup=2） 的注释中就可以设置（与上述元素设置等价，数字大小决定优先级，从1开始越小优先级越高）
+！！！经过上面的学习会有可能为了方便而设置虚拟访问路径为（&amp;rdquo;/&amp;ldquo;）,就可以直接访问工程名是访问此时的Servlet，细心的人可能会发现此时工程内的静态web资源无法访问，去查看服务器conf目录下的web.xml文件会发现这样一段代码：
+&amp;lt;servlet&amp;gt; &amp;lt;servlet-name&amp;gt;jsp&amp;lt;/servlet-name&amp;gt; &amp;lt;servlet-class&amp;gt;org.apache.jasper.servlet.JspServlet&amp;lt;/servlet-class&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;fork&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;false&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;init-param&amp;gt; &amp;lt;param-name&amp;gt;xpoweredBy&amp;lt;/param-name&amp;gt; &amp;lt;param-value&amp;gt;false&amp;lt;/param-value&amp;gt; &amp;lt;/init-param&amp;gt; &amp;lt;load-on-startup&amp;gt;3&amp;lt;/load-on-startup&amp;gt; &amp;lt;/servlet&amp;gt; &amp;lt;servlet-mapping&amp;gt; &amp;lt;servlet-name&amp;gt;default&amp;lt;/servlet-name&amp;gt; &amp;lt;url-pattern&amp;gt;/&amp;lt;/url-pattern&amp;gt; &amp;lt;/servlet-mapping&amp;gt;  一切都明白了，web服务器在启动时会构建一个优先级为1的 Servlet 对象，而且它的虚拟目录就是（&amp;rdquo;/&amp;ldquo;）,这个 Servlet对象就是用来处理用户访问服务器的静态web资源的servlet对象。我们为了图方便而设置的虚拟目录就屏蔽了这个Servlet对象，从而无法访问静态web资源。：）</description>
+    </item>
+    
+    <item>
+      <title>12. Servlet获取表单数据</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sat, 16 Feb 2019 03:46:23 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet%E8%8E%B7%E5%8F%96%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE/</guid>
+      <description>## []()Servlet获取表单数据
+很多情况下，需要传递一些信息，从浏览器到 Web 服务器，最终到后台程序。浏览器使用两种方法可将这些信息传递到 Web 服务器，分别为 GET 方法和 POST 方法。
+1.GET方法
+GET 方法是默认的从浏览器向 Web 服务器传递信息的方法，它会产生一个很长的字符串，出现在浏览器的地址栏中。信息用？与url分隔&amp;amp;连接，如果您要向服务器传递的是密码或其他的敏感信息，请不要使用 GET 方法。GET 方法有大小限制：请求字符串中最多只能有 1024 个字符。
+这些信息使用 QUERY_STRING 头传递，并可以通过 QUERY_STRING 环境变量访问，Servlet 使用 doGet() 方法处理这种类型的请求。
+2.POST方法
+另一个向后台程序传递信息的比较可靠的方法是 POST 方法。POST 方法打包信息的方式与 GET 方法基本相同，但是 POST 方法不是把信息作为 URL 中 ? 字符后的文本字符串进行发送，而是把这些信息作为一个单独的消息。消息以标准输出的形式传到后台程序，您可以解析和使用这些标准输出。Servlet 使用 doPost() 方法处理这种类型的请求。
+3.使用Servlet获取表单数据
+Servlet 处理表单数据，这些数据会根据不同的情况使用不同的方法自动解析：
+getParameter()：您可以调用 request.getParameter() 方法来获取表单参数的值。 getParameterValues()：如果参数出现一次以上，则调用该方法，并返回多个值，例如复选框。 getParameterNames()：如果您想要得到当前请求中的所有参数的完整列表，则调用该方法。  3.1 表单提交使用GET方法的实例
+使用 servlet 3.0 获得表单数据数据要主要注意以下2点。
+ 1, form 表单的 Action 属性值的目录所指代的 Servlet 应包含工程目录，或直接写Servlet的虚拟映射目录，也就是说 Anction 属性值应为：/工程名/Servlet虚拟映射目录 或 Servlet虚拟映射目录 2，表单 value 值尽量不使用中文，传输后无法解析。 3.</description>
+    </item>
+    
+    <item>
+      <title>13. Servlet Cookies处理</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-cookies%E5%A4%84%E7%90%86/</link>
+      <pubDate>Tue, 26 Feb 2019 22:44:33 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-cookies%E5%A4%84%E7%90%86/</guid>
+      <description>## []()Servlet Cookies处理
+1.Cookies 的主要用途
+Cookies 是存储在客户端计算机上的文本文件，并保留了各种跟踪信息。Cookies最典型的应用是判定注册用户是否已经登录网站，用户可能会得到提示，是否在下一次进入此网站时保留用户信息以便简化登录手续，这些都是Cookies的功用。另一个重要应用场合是“购物车”之类处理。用户可能会在一段时间内在同一家网站的不同页面中选择不同的商品，这些信息都会写入Cookies，以便在最后付款时提取信息。
+2.Cookies 处理的一般流程
+(1). 用户在浏览器页面提交表单数据。
+(2). 服务器根据自己的业务需求，用某些用户的数据生成 cookie 。例如：姓名、年龄或识别号码等。 浏览器将这些信息存储在本地计算机上。
+(3). 当下一次浏览器向 Web 服务器发送任何请求时，浏览器会把这些Cookies 信息发送到服务器，服务器将使用这些信息来识别用户。
+3.Servlet 中和Cookies相关的方法
+ 序号 | 方法 -- | -------------------------------------------------------------------------------------------------- 1 | public void setDomain(String pattern)该方法设置 cookie 适用的域。 2 | public String getDomain()该方法获取 cookie 适用的域，例如 w3cschool.cn。 3 | public void setMaxAge(int expiry)该方法设置 cookie 过期的时间（以秒为单位）。如果不这样设置，cookie 只会在当前 session 会话中持续有效。 4 | public int getMaxAge()该方法返回 cookie 的最大生存周期（以秒为单位），默认情况下，-1 表示 cookie 将持续下去，直到浏览器关闭。 5 | public String getName()该方法返回 cookie 的名称。名称在创建后不能改变。 6 | public void setValue(String newValue)该方法设置与 cookie 关联的值。 7 | public String getValue()该方法获取与 cookie 关联的值。 8 | public void setPath(String uri)该方法设置 cookie 适用的路径。如果您不指定路径，与当前页面相同目录下的（包括子目录下的）所有 URL 都会返回 cookie。 9 | public String getPath()该方法获取 cookie 适用的路径。 10 | public void setSecure(boolean flag)该方法设置布尔值，表示 cookie 是否应该只在加密的（即 SSL）连接上发送。 11 | public void setComment(String purpose)该方法规定了描述 cookie 目的的注释。该注释在浏览器向用户呈现 cookie 时非常有用。 12 | public String getComment()该方法返回了描述 cookie 目的的注释，如果 cookie 没有注释则返回 null。  4.</description>
+    </item>
+    
+    <item>
+      <title>14. Servlet session跟踪</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-session%E8%B7%9F%E8%B8%AA/</link>
+      <pubDate>Wed, 27 Feb 2019 15:11:25 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-session%E8%B7%9F%E8%B8%AA/</guid>
+      <description>## []()Servlet session跟踪
+1.什么是session
+Session 对象存储特定用户会话所需的属性及配置信息。
+一般情况下，session都是存储在服务器内存里，当服务器进程被停止或者重启的时候，内存里的session也会被清空，如果设置了session的持久化特性，服务器就会把session保存到硬盘上，当服务器进程重新启动或这些信息将能够被再次使用， Weblogic Server支持的持久性方式包括文件、数据库、客户端cookie保存和复制。
+2.Tomcat中session的工作原理
+（1） session 的产生，存放
+当浏览器访问服务器时，服务器使用HttpServletRequest的getSession(true)的取得浏览器cookies中的sessionid时，如果没有session对象，也就是浏览器第一次访问服务器，服务器就会生成一个session对象。tomcat的ManagerBase类提供创建sessionid的方法：随机数+时间+jvmid；存储在服务器的内存中，tomcat的StandardManager类将session存储在内存中，也可以持久化到file，数据库，memcache，redis等。客户端只保存sessionid到cookie中，而不会保存session，session销毁只能通过invalidate或超时，关掉浏览器并不会关闭session。
+（2）session 作用
+当用户浏览器cookies中有sessionid的时候，服务器就可以从HttpServletRequest 类对象得到 sessionid，从而查找服务器中的session对象得到用户浏览器的session信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。当会话过期或被放弃后，服务器将终止该会话。Session 对象最常见的一个用法就是存储用户的首选项。例如，如果用户指明不喜欢查看图形，就可以将该信息存储在 Session 对象中。
+3.Servlet中与session相关的方法
+ 序号 | 方法 -- | ----------------------------------------------------------------------------------- 1 | public void setAttribute(String name,Object value)将value对象以name名称绑定到会话 2 | public object getAttribute(String name)取得name的属性值，如果属性不存在则返回null 3 | public void removeAttribute(String name)从会话中删除name属性，如果不存在不会执行，也不会抛处错误. 3 | public Enumeration getAttributeNames()返回和会话有关的枚举值 4 | public void invalidate()使会话失效，同时删除属性对象 5 | public Boolean isNew()用于检测当前客户是否为新的会话 6 | public long getCreationTime()返回会话创建时间 7 | public long getLastAccessedTime()返回在会话时间内web容器接收到客户最后发出的请求的时间 8 | public int getMaxInactiveInterval()返回在会话期间内客户请求的最长时间为秒 9 | public void setMaxInactiveInterval(int seconds)允许客户客户请求的最长时间 10 | ServletContext getServletContext()返回当前会话的上下文环境，ServletContext对象可以使Servlet与web容器进行通信 11 | public String getId()返回会话期间的识别号  4.</description>
+    </item>
+    
+    <item>
+      <title>15. ServletContext 对象</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servletcontext-%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Thu, 28 Feb 2019 21:08:53 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servletcontext-%E5%AF%B9%E8%B1%A1/</guid>
+      <description>## []()ServletContext 对象
+参考教程：https://www.w3cschool.cn/servlet/servlet-3ceg2p0t.html
+1.ServletContext 对象简介
+ServletContext是一个全局的储存信息的空间，服务器开始就存在，服务器关闭才释放。为了方便大家理解，我们将ServletContext和Cookie、Session做一个简单对比，如下图：
+我们可以把ServletContext当成一个公用的空间，可以被所有的客户访问，如上图，A、B、C三个客户端都可以访问。
+WEB容器在启动时，它会为每个Web应用程序都创建一个对应的ServletContext，它代表当前Web应用，并且它被所有客户端共享。
+由于一个WEB应用中的所有Servlet共享同一个ServletContext对象，因此Servlet对象之间可以通过ServletContext对象来实现通讯。ServletContext对象通常也被称之为context域对象。公共聊天室就会用到它。
+当web应用关闭、Tomcat关闭或者Web应用reload的时候，ServletContext对象会被销毁。
+2.使用ServletContext对象
+（1）怎么得到 ServletContext对象
+this.getServletContext(); this.ServletConfig().getServletContext();  主要有以上两种方法来获取ServletContext对象。
+（2）使用ServletContext对象
+你可以把它想象成一张表，这个和Session非常相似：每一行就是一个属性
+和其对应的value值，可以用来存储信息。
+添加属性：setAttribute(String name, Object obj); 得到值：getAttribute(String name)，这个方法返回Object 删除属性：removeAttribute(String name)  3.实例
+这个实例演示，一个Servlet向ServletContext对象写入信息。另一个Servlet读取Servlet对象的信息。（Context1写入信息，Context2读取信息）
+Context1代码如下：
+package context; import java.io.IOException; import java.io.PrintWriter; import javax.servlet.ServletContext; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; @WebServlet(&amp;quot;/Context1&amp;quot;) public class Context1 extends HttpServlet { private static final long serialVersionUID = 1L; protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { PrintWriter out = response.</description>
+    </item>
+    
+    <item>
+      <title>16. 日期时间处理</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sun, 03 Mar 2019 01:18:34 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86/</guid>
+      <description>## []()日期时间处理
+Servlet 最大的优势就是可以使用 Java 中的大多数可用的方法。处理时间也是非常的方便。处理时间一般是用Date类。首先介绍一下Date类的方法如下：
+1.Date方法
+ 序号 | 方法 -- | ------------------------------------------------------------------------------------------------------------ 1 | boolean after(Date date)如果调用的 Date 对象中包含的日期在 date 指定的日期之后，则返回 true，否则返回 false。 2 | boolean before(Date date)如果调用的 Date 对象中包含的日期在 date 指定的日期之前，则返回 true，否则返回 false。 3 | Object clone( )重复调用 Date 对象。 4 | int compareTo(Date date)把调用对象的值与 date 的值进行比较。如果两个值是相等的，则返回 0。如果调用对象在 date 之前，则返回一个负值。如调用对象在 date 之后，则返回一个正值。 5 | int compareTo(Object obj)如果 obj 是 Date 类，则操作等同于 compareTo(Date)。否则，它会抛出一个 ClassCastException。 6 | boolean equals(Object date)如果调用的 Date 对象中包含的时间和日期与 date 指定的相同，则返回 true，否则返回 false。 7 | long getTime( )返回 1970 年 1 月 1 日以来经过的毫秒数。 8 | int hashCode( )为调用对象返回哈希代码。 9 | void setTime(long time)设置 time 指定的时间和日期，这表示从 1970 年 1 月 1 日午夜以来经过的时间（以毫秒为单位）。 10 | String toString( )转换调用的 Date 对象为一个字符串，并返回结果。  2。格式化时间</description>
+    </item>
+    
+    <item>
+      <title>17. Servlet 实现文件的下载和上传</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E4%B8%8A%E4%BC%A0/</link>
+      <pubDate>Sun, 03 Mar 2019 20:20:02 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E4%B8%8A%E4%BC%A0/</guid>
+      <description>## []()Servlet 实现文件的下载和上传
+1.文件下载
+实现简单的文件下载主要有以下2步：
+1.读取服务器上的资源文件（包括：获取文件所在目录（绝对路径），文件名）
+2.设置响应格式，编码以及HTTP响应头 （HTTP响应头 “content-disposition” 为：&amp;rdquo;attachment;）
+3.向用户浏览器输出资源文件。
+2.文件下载实例
+下面是一个文件下载的Servlet，用户访问此 Servlet 既可以下载一张图片
+获取资源文件的绝对路径可以用 ：this.getServletContext().getRealPath(&amp;rdquo; 文件名 &amp;ldquo;）
+来获取。
+FileDownload.java 文件如下：
+package fileDownload; import java.io.FileInputStream; import java.io.FileNotFoundException; import java.io.IOException; import java.io.InputStream; import java.io.OutputStream; import java.net.URLEncoder; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; @WebServlet(&amp;quot;/FileDownload&amp;quot;) public class FileDownload extends HttpServlet { private static final long serialVersionUID = 1L; protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { String path=this.</description>
+    </item>
+    
+    <item>
+      <title>18. Servlet 网页重定向,控制页面刷新，网站点击量统计</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E7%BD%91%E9%A1%B5%E9%87%8D%E5%AE%9A%E5%90%91%E6%8E%A7%E5%88%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E7%BD%91%E7%AB%99%E7%82%B9%E5%87%BB%E9%87%8F%E7%BB%9F%E8%AE%A1/</link>
+      <pubDate>Mon, 04 Mar 2019 22:45:10 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/servlet-%E7%BD%91%E9%A1%B5%E9%87%8D%E5%AE%9A%E5%90%91%E6%8E%A7%E5%88%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E7%BD%91%E7%AB%99%E7%82%B9%E5%87%BB%E9%87%8F%E7%BB%9F%E8%AE%A1/</guid>
+      <description>版权声明： https://blog.csdn.net/ak_csdno/article/details/88141771
+## []()Servlet 网页重定向,控制页面刷新，网站点击量统计
+1. 网页重定向
+在Servlet中重定向网页主要有以下两种方式：
+（1） 使用response.sendRedirect(String URL) (URL的根目录是web容器，即需要在Servlet的对外访问路径前加上项目名限定，如：/web应用名/Servlet对外访问路径)
+（2）使用 response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY)
+response.setHeader(“location”,“目标URL”) 设置Status和HTTP头重定向网页
+（值得说明的是 SC_MOVED_TEMPORARILY是HttpServletResponse类的静态变量）
+实例
+package servletMIX; import java.io.IOException; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.servlet.http.HttpServletResponse; @WebServlet(&amp;quot;/Redirect&amp;quot;) public class Redirect extends HttpServlet { private static final long serialVersionUID = 1L; protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { // response.sendRedirect(&amp;quot;/Servlet/Date&amp;quot;); //使用response.sendRedirect()方法重定向 response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY); // 设置Status和HTTP头重定向 response.setHeader(&amp;quot;location&amp;quot;, &amp;quot;/Servlet/Date&amp;quot;); } protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { doGet(request, response); } }  运行结果：</description>
+    </item>
+    
+    <item>
+      <title>19. 数据库的连接</title>
+      <link>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%BF%9E%E6%8E%A5/</link>
+      <pubDate>Sun, 14 Apr 2019 14:40:10 +0000</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/web%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%BF%9E%E6%8E%A5/</guid>
+      <description>#一. 连接 mysql 数据库
+#####1.驱动下载
+下载连接：https://dev.mysql.com/downloads/
+进入页面点击Community，选择下方的MySQL Connectors，选择Connector/J，如下图所示。
+进入页面Select Operating System: 选择Platform Independent ，选择完后页面如下，点击Download即可下载，压缩文件。如下图所示。
+#####2.连接数据库准备
+驱动下载完成解压后，复制根目录下的 ：mysql-connector-java-8.0.15.jar 文件到Web项目的 WEB-INF/lib 目录下。然后鼠标右键项目，选择Build Path 在Libraries 里点击Classpath选择添加 Add JAR 选择项目目录下的 mysql-connector-java-8.0.15.jar 文件添加。
+[]()3.连接数据库 （1.利用反射类加载数据库驱动类：
+mysql 8.x驱动类位置为： com.mysql.cj.jdbc.Driver 中间多了一个 .cj
+**反射加载驱动类： Class.forName(&amp;quot;com.mysql.cj.jdbc.Driver&amp;quot;); **
+**URL： &amp;quot;jdbc:mysql://localhost:3306/数据库名&amp;quot;,User,password **
+（2.实例代码（servlet实现）：
+package mysql; import java.io.IOException; import java.io.PrintWriter; import java.sql.Connection; import java.sql.DriverManager; import java.sql.ResultSet; import java.sql.ResultSetMetaData; import java.sql.SQLException; import java.sql.Statement; import javax.servlet.ServletException; import javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet; import javax.servlet.http.HttpServletRequest; import javax.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on en</title>
+    <link>https://compass-ak.gitee.io/java/web/spring/</link>
+    <description>Recent content in Spring on en</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Jul 2019 22:39:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://compass-ak.gitee.io/java/web/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. Spring loC Container</title>
+      <link>https://compass-ak.gitee.io/java/web/spring/spring-loc-container/</link>
+      <pubDate>Fri, 20 Sep 2019 17:02:15 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/java/web/spring/spring-loc-container/</guid>
+      <description>1. Spring 概述 Spring使创建Java企业应用程序变得容易。它提供了在企业环境中使用Java语言所需的一切，并支持Groovy和Kotlin作为JVM上的替代语言，并且可以根据应用程序的需求灵活地创建多种体系结构。从Spring Framework 5.1开始，Spring需要有JDK 8+（Java SE 8+）的开发运行环境，并提供对JDK 11 LTS的现成支持。
+Spring框架分为多个模块。应用程序可以根据其需求选择所需的模块。核心容器模块是Spring框架的核心，包括配置模型和依赖项注入机制。除此之外，Spring框架还为不同的应用程序体系结构提供了基础支持，包括消息传递，事务性数据和持久性以及Web。它还包括基于Servlet的Spring MVC Web框架，以及并行的Spring WebFlux反应式Web框架。
+2. Spring loC Container 概述 IoC (Inversion of Control) 翻译成中文称之为“控制反转”，为什么会叫控制反转呢？ 在我们以往的编程中，通常 new 一个类的实例，控制权往往都是由程序控制。而在使用Spring框架的应用程序中，这些工作都是交给 Spring loC Container 来做。由 Spring loC Container来负责实例化，定位，配置和注入应用程序的对象以及对象间的依赖关系。对于对象的控制权由程序员转向了程序（Spring loC Container), 所以才会叫做控制反转。
+在org.springframework.beans和org.springframework.context包是Spring框架的IoC容器的基础核心。 BeanFactory 容器提供了一种高级配置机制，能够管理任何类型的对象。 ApplicationContext 是的子接口BeanFactory。它增加了：
+ 与Spring的AOP功能轻松集成 消息资源处理（用于国际化） 活动发布 应用层特定的上下文，例如WebApplicationContext 用于Web应用程序中的。  简而言之，BeanFactory提供了配置框架和基本功能，并 ApplicationContext 增加了更多针对企业的功能。该 ApplicationContext 是一个完整 BeanFactory 的超集。
+由于 BeanFactory 逐渐被弃用，我们着重了解org.springframework.context.ApplicationContext，由于它是BeanFactory的超集，ApplicationContext接口也代表Spring IoC容器，并负责实例化，配置和组装Bean。容器通过读取配置元数据来获取有关要实例化，配置和组装哪些对象的指令。配置元数据可以用XML，Java批注或Java代码表示。它使您能够表达组成应用程序的对象以及这些对象之间的丰富相互依赖关系。ApplicationContext 所表示的 spring 容器在整个spring框架中的作用如下图所示。
+Spring 工作原理
+spring 容器会将你配置元数据注入到应用程序中的类对象中，因此在 ApplicationContext 创建和初始化后，应用程序系统将是配置完全且可运行的。</description>
+    </item>
+    
+  </channel>
+</rss>

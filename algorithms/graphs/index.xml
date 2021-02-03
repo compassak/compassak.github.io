@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Graphs on en</title>
+    <link>https://compass-ak.gitee.io/algorithms/graphs/</link>
+    <description>Recent content in Graphs on en</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jun 2020 22:41:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://compass-ak.gitee.io/algorithms/graphs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. Undigraph</title>
+      <link>https://compass-ak.gitee.io/algorithms/graphs/undigraph/</link>
+      <pubDate>Thu, 09 Jul 2020 12:02:02 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/graphs/undigraph/</guid>
+      <description>无向图 -图片资料来自 Algorithms, 4th Edition
+图：图是由一组顶点和一组能够将两个顶点相连的边组成。
+一般情况下为了和其他的图模型相互区别，又称图为无向图。在现实中的许多问题都可以抽象为一张图，结合优秀的算法，许多困难的问题都可以迎刃而解。
+1. 术语表 和图有关的术语，定义非常多，其一部分内容如下：
+   术语 条件（释义）     顶点相邻 两个顶点通过一条边相连时，并称这条边 依附于 这两个顶点   顶点的度数 连接它边的总数   子图 指定图的子集   路径 由边顺序连接的一系列顶点   简单路径 一条没有重复顶点的路径   环 含有至少一条边且起点和终点相同的路径   简单环 除起点和终点相同外，不含有重复顶点和边的环   顶点连通 两个顶点间存在一条连接双方的路径时   连通图 图中任意一个顶点都存在一条路径到达另外一个顶点   极大连通子图 非连通图的一个连通部分   无环图 不包含环的图   图密度 指已经连接的顶点对占所有可能被连接顶点对的比例   稀疏图 很少的顶点对被连接   稠密图 很少的顶点对没有被连接   二分图 顶点可分割为两个互不相交的子集，两个子集内的顶点不相邻    2.</description>
+    </item>
+    
+    <item>
+      <title>2. Digraph</title>
+      <link>https://compass-ak.gitee.io/algorithms/graphs/digraph/</link>
+      <pubDate>Sat, 18 Jul 2020 09:23:35 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/graphs/digraph/</guid>
+      <description>有向图 -图片资料来自 Algorithms, 4th Edition
+有向图中的有向是指图中每一条边都是有向的，每一条边连接的两个顶点都是一个有序对，它们的邻接性是单向的。能从 v-&amp;gt;w ，不一定能从 w-&amp;gt;v。这是有向图与无向图的本质区别，这种区别导致了两种图处理算法上的巨大差异。
+1. 术语表 学习有向图的处理算法我们，需要了解一些定义和术语。如下表：
+   术语 条件（释义）     有向图 一幅有方向性的图，由一组顶点和一组有方向的边组成，每条有方向的边都连接着有序的一对顶点。   出度 顶点指出边的总数   入度 指向该顶点边的总数   有向路径 由一系列顶点组成，对于其中的每一个顶点都存在一条有向边从它指向序列中的下一个顶点   有向环 至少含有一条边且起点终点相同的有向路径   简单有向环 是一条不含有重复顶点的环（除起点和终点相同）   长度（路径，环） （路径，环）所包含的边数   有向无环图（DAG） 不含环的有向图   强连通 有向图中的两顶点相互可达,称两顶点强连通。如果有向图所有顶点强连通则图强连通    2. 有向图数据类型 有向图虽然在逻辑上比无向图中多出了许多限定条件，但是其数据类型的实现更简单。由于边是有向的，所以我们用邻接表表示边时，只会出现一次。具体实现细节如下：
+public class Digraph{ private final int V; // 顶点数 private int E; // 边数 private Node[] adj; // 邻接表 /** * 邻接表结点静态内部类 */ private static class Node{ int vertex; // 顶点 Node next; // 下一个元素的引用 Node(){} Node(int vertex, Node next){ this.</description>
+    </item>
+    
+    <item>
+      <title>3. Minimum-Spanning-Tree</title>
+      <link>https://compass-ak.gitee.io/algorithms/graphs/mst/</link>
+      <pubDate>Tue, 21 Jul 2020 20:51:30 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/graphs/mst/</guid>
+      <description>最小生成树 讨论最小生成树要基于一种叫 加权图 的图模型。加权图的 加权 的含义是为图的每一条边关联一个权值或是成本。这种图相比于无向图可以更细致的描述问题。在一幅航空图中，边表示航线，权值则可以表示距离或是费用。在一幅电路图中，边表示导线，权值则可能表示导线的长度即成本，或是信号通过这条线路所需的时间。我们可以根据这些信息设计算法计算出最合适的航线，设计一个线路规划最良好的线路。
+而 最小生成树(Minimum-Spanning-Tree) 和解决上述一类问题有着密切的联系，图的 生成树 是它的一颗含有其所有顶点的无环连通子图。 最小生成树 是所有边的权值之和最小的那颗生成树。 值得一提的是边的权值为了适应更多的问题是允许为负数的。
+1. 加权无向图数据类型 表示加权无向图有多种方法，可以使用前面几篇文章中无向图的方法，只需要在结点中增加一个权值属性。 但是由于加权无向图中对边的操作非常频繁，所以会做一些小改动，邻接表存放的不是结点而是一个个边（Edge）对象。根据加权无向图中边的定义，描述它需要三个属性：一个顶点，另一个顶点，权重。以及实现重写一些必要的方法。具体如下：
+public class Edge { private final int v; // 顶点之一 private final int w; // 另一个顶点 private final double weight; // 边的权重 public Edge(int v, int w, double weight) { this.v = v; this.w = w; this.weight = weight; } public double weight() { return weight; } public int either() { return v; } public int other(int vertex) { if (vertex == v) return w; else if (vertex == w) return v; else throw new RuntimeException(&amp;quot;Inconsistent edge&amp;quot;); } public String toString() { return String.</description>
+    </item>
+    
+    <item>
+      <title>4. Shortest Path</title>
+      <link>https://compass-ak.gitee.io/algorithms/graphs/sp/</link>
+      <pubDate>Fri, 24 Jul 2020 19:03:39 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/graphs/sp/</guid>
+      <description>最短路径 在简单的无向图模型中，我们使用 广度优先搜索 可以找到一个顶点到另一个顶点的最短路径（含顶点最少）。但是在加权图中情况有了很大的不同，需要考虑边的权重，这也更贴合许多实际问题。在加权图中的最短路径又可以理解为：找到从一个顶点到达另一个顶点的成本最小的路径。
+为了能够解决更多的实际问题，方便提取问题的抽象模型。我们讨论最短路径基于的图模型一定要具有一般性，考虑更多的变量。也就是加权有向图模型，每一条路径都是有向的，而且有一个和路径关联的权重。
+1. 加权有向图数据结构 考虑到加权有向图于有向图有一定类似，而且边具有权重，会有很多对边的操作，需要像有向图那样将边抽象实现。有向边的数据结构比无向边简单很多，因为边只有一个方向，指定一个顶点为起点，另一个为终点就行了。加权有向边的具体实现如下：
+DirectedEdge
+public class DirectedEdge { private final int v; // 边起点 private final int w; // 边终点 private final double weight; // 边权重 public DirectedEdge(int v, int w, double weight) { this.v = v; this.w = w; this.weight = weight; } public double weight(){ return weight; } public int from(){ return v; } public int to(){ return w; } public String toString() { return String.</description>
+    </item>
+    
+  </channel>
+</rss>

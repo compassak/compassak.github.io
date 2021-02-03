@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sorting on en</title>
+    <link>https://compass-ak.gitee.io/algorithms/sorting/</link>
+    <description>Recent content in Sorting on en</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 May 2020 22:41:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://compass-ak.gitee.io/algorithms/sorting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1. Merge-Sort</title>
+      <link>https://compass-ak.gitee.io/algorithms/sorting/%E5%B9%B6%E5%BD%92%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Sun, 17 May 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/sorting/%E5%B9%B6%E5%BD%92%E6%8E%92%E5%BA%8F/</guid>
+      <description>并归排序 顾名思义，并归排序是排序算法的一种，它的主要特点及思想就是体现在 “并归” 二字。并归排序中的并归的含义是指，将两个有序的数组并归组合成一个更大的有序数组。
+而并归排序的思想就是将一个待排序数组（递归的）平均分割成两个子数组，然后分别给左右两个子数组排序，最后将排序结果并归起来，完成数组的排序。
+1. 自顶向下的并归排序 自顶向下的并归排序也被称为递归并归排序。递归实现的归并排序是算法设计中分治思想的典型应用。我们将一个大问题分割成小问题分别解决，然后用所有小问题的答案来解决整个大问题： 将一个待排序数组（递归的）平均分割成两个子数组，两个子数组又递归的调用排序方法，直到递归到子数组只含一个元素。然后将二者并归就得到了一个含两个元素的有序数组。最后依次回溯并归直到待排序数组中没有子数组，完成排序。
+Java
+public class Merge { //并归所需的辅助数组 private static int[] aux; /** * sort1 自顶向下的并归排序 * @param a 待排序数组 */ public static void sort1(int[] a) { //分配空间 aux = new int[a.length]; sort1(a, 0, a.length-1); } private static void sort1(int[] a, int lo, int hi) { //数组长度为1 if (hi &amp;lt;= lo) return; int mid = lo + (hi - lo) / 2; //排序左半边 sort1(a, lo, mid); //排序右半边 sort1(a, mid + 1, hi); //并归结果 merge(a, lo, mid, hi); } /** * sort2 自底向上的并归排序 * @param a 待排序数组 */ public static void sort2(int[] a){ int n = a.</description>
+    </item>
+    
+    <item>
+      <title>2. Quick-Sort</title>
+      <link>https://compass-ak.gitee.io/algorithms/sorting/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Mon, 18 May 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/sorting/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</guid>
+      <description>快速排序 快速排序算法可能是应用最为广泛的算法，它的实现较为简单而且排序效率比大多数算法都要高。仅需要一个辅助栈就可以实现在原数组上原地排序。但是快速排序算法稳定性不高，如果使用不当经常可能使算法的性能降低至平方级别。如何正确使用和优化快速排序是使用它之前必须研究的问题。
+1. 基本实现 快速排序算法和并归的共性就是它们都是一种分治排序算法，而且在某种意义上，两种算法是互补的。并归是将待排序数组平分（递归的）两个子数组，将两个子数组排序后将结果并归起来就得到了一个有序数组。而快速排序是选取一个切分元素，将数组切分（递归的）为两个子数组，然后将两个子数组分别排序，子数组排序完成整个数组也就排好序了。这一区别在代码中的体现就是并归排序的递归调用发生在处理整个数组之前；在快速排序中，递归调用发生在处理整个数组之后。快速排序基本实现如下。
+Java
+public class Quick { public static void sort(int[] a){ sort(a, 0, a.length - 1); } private static void sort(int[] a, int lo, int hi){ if(hi &amp;lt;= lo)return; int j = partition(a, lo, hi); sort(a, lo, j-1); sort(a, j+1, hi); } //切分操作 private static int partition(int[] a, int lo, int hi){ //左右扫描指针 int i = lo, j = hi+1; //切分元素 int V = a[lo]; while (true){ //扫描左右元素，出现左元素比V大或右元素比V小，则交换两元素位置。 while (a[++i] &amp;lt; V) if (i == hi) break; while (a[--j] &amp;gt; V) if (j == lo) break; if (i &amp;gt;= j) break; exch(a, i, j); } exch(a, lo, j); return j; } //交换元素位置 private static void exch(int[] a, int i, int j){ int tmp = a[i]; a[i] = a[j]; a[j] = tmp; } }  此算法实现的关键在于切分如何实现，在上述代码中切分操作的实现思路为：</description>
+    </item>
+    
+    <item>
+      <title>3. Heap-Sort</title>
+      <link>https://compass-ak.gitee.io/algorithms/sorting/%E5%A0%86%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Tue, 19 May 2020 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/algorithms/sorting/%E5%A0%86%E6%8E%92%E5%BA%8F/</guid>
+      <description>堆排序 1. 优先队列 学习堆排序前，需要先了解优先队列是什么东西，引出数据结构：堆，最后学习堆排序。优先队列和普通的队列一样是一种数据结构，普通队列遵循的原则就是先进先出（FIFO）。而优先队列则是无论入队顺序，当前队列中优先级最高的元素先出。谈到优先级就有两种确定优先级的策略，一是值小的优先级高，二是值大的优先级高。这也就把优先队列分为了两种：
+ 最大优先队列：无论入队顺序，当前队列中最大的元素出队列。
+ 最小优先队列：无论入队顺序，当前队列中最小的元素出队列。
+  由于二者实现原理类似，下面的优先队列默认是最大优先队列。
+2. 初级实现 在还不知道堆之前，我们用一般的数据结构去实现优先队列也是可行的，但是由于数据结构的限制，算法的性能可能是比较低的。
+1. 基于无序数组实现
+使用无序的数组在插入元素时，可以添加任意添加到数组中一个空位置。在取出最大元素时需要遍历一遍数组找出最大元素，让其与边界元素交换位置然后删除出队。可以添加代码自动的调整数组大小防止元素溢出。
+2. 基于有序数组实现
+在插入每一个新元素时，将比它大的元素都右移一位然后将其插入数组来保持数组的有序性（插入排序）。这样数组中最大的元素总是在数组的最右边，每次让元素出队列直接选择最右边的元素就完了。
+当然上述的两种实现用链表也能实现。基于链表实现在插入，移动元素时有一定的优势，但是在遍历数组时没有数组的效率高，在此不再赘述。
+在对于普通队列或栈的实现时，我们使用数组实现，能够使其所有操作都在常数时间内完成。而上述两种初级实现方法，插入元素或删除最大元素的两种操作之一在最坏情况下需要线性的时间来完成，这显然是不怎么好的。而堆这种数据结构能好的实现优先队列，可以将插入元素，删除最大元素消耗的时间降低至对数级，如下表所示（log默认以2为底）。
+   数据结构 插入元素 删除最大元素     有序数组 N 1   无序数组 1 N   堆 logN logN   理想情况 1 1    3. 堆的定义 堆在逻辑结构上是一个完全二叉树，所以有时堆也被称为二叉堆。下面介绍几个概念：
+1. 满二叉树：在每一层上的节点数都达到了最大值，即在第 i 层的节点应为2^(i-1)个节点。
+2. 完全二叉树：一棵深度为k的有n个结点的二叉树，对树中的结点按从上至下、从左到右的顺序进行编号，如果编号为i（1≤i≤n）的结点与满二叉树中编号为i的结点在二叉树中的位置相同，则这棵二叉树称为完全二叉树。也就是说，一颗满二叉树，或缺失掉右下角一部分节点的满二叉树就是一颗完全二叉树。
+3. 当一棵二叉树的每个结点都大于等于它的两个子结点时，它被称为堆有序。 不难看出在一课堆有序的二叉树中，最大的元素就是二叉树的根节点。
+4. 堆的表示
+在一般情况下我们表示一颗二叉树都需要在每一个元素中放置3个指针，一个是指向父节点，另外两个指向其两个子节点，方便我们操作二叉树的元素。但是由于堆是一颗完全二叉树，事情就简化了许多，我们仅使用一个数组就可以表示一个堆: 我们将整个堆按层级顺序放置到一个数组中，根节点在位置1，根节点左子节点在位置2，右子节点在位置3，依次类推 。这样放置后我们可以容易的得到结论：在一个数组表示堆中，位置 k 的结点的父结点的位置为k/2，而它的两个子结点的位置则分别为 2k 和 2k+1。 这样我们在不使用指针的情况下，也可以找到一个节点的父节点，以及其两个子节点。而且也大幅提高了查找元素的性能。</description>
+    </item>
+    
+  </channel>
+</rss>

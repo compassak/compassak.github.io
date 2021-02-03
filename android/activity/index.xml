@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Activity on en</title>
+    <link>https://compass-ak.gitee.io/android/activity/</link>
+    <description>Recent content in Activity on en</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Jul 2019 22:41:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://compass-ak.gitee.io/android/activity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1.  Activity生命周期</title>
+      <link>https://compass-ak.gitee.io/android/activity/activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</link>
+      <pubDate>Thu, 29 Aug 2019 22:50:43 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/android/activity/activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</guid>
+      <description>1. Activity简介 Activity 是一个Android应用组件，用户可与其提供的屏幕进行交互，以执行拨打电话、拍摄照片、发送电子邮件或查看地图等操作。 每个 Activity 都会获得一个用于绘制其用户界面的窗口。窗口通常会充满屏幕，但也可小于屏幕并浮动在其他窗口之上。
+一个应用通常由多个彼此松散联系的 Activity 组成。 一般会指定应用中的某个 Activity 为“主”Activity，即首次启动应用时呈现给用户的那个 Activity。 而且每个 Activity 均可启动另一个 Activity，以便执行不同的操作。
+2. Activity生命周期 所谓Activity的生命周期就是一个Activity从创建到销毁的过程，这整个过程都是由Android系统处理，我们一般不能直接知道Activity处于哪个生命周期，但是和其他具有生命周期的对象一样，当Activity进入生命周期的每个阶段Android系统都会调用其特定的方法，以方便我们来管理Activity，以及在Activity的各个生命周期执行必要的相关操作。例如：在Activity刚创建时，需要设置页面布局，在Activity被停止时要释放网络或数据库连接，这种比较消耗系统资源的对象。
+以下的Activity内的方法包扩了每一个Activity基本生命周期方法。
+public class ExampleActivity extends Activity { @Override public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); // The activity is being created. } @Override protected void onStart() { super.onStart(); // The activity is about to become visible. } @Override protected void onResume() { super.onResume(); // The activity has become visible (it is now &amp;quot;resumed&amp;quot;).</description>
+    </item>
+    
+    <item>
+      <title>2. Acticity的创建,启动和关闭</title>
+      <link>https://compass-ak.gitee.io/android/activity/acticity%E7%9A%84%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E5%92%8C%E5%85%B3%E9%97%AD/</link>
+      <pubDate>Thu, 05 Sep 2019 08:27:04 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/android/activity/acticity%E7%9A%84%E5%88%9B%E5%BB%BA%E5%90%AF%E5%8A%A8%E5%92%8C%E5%85%B3%E9%97%AD/</guid>
+      <description>现在的大多数Android IDE 都可以直接创建 Activity “类型”的 java 类，以及完成一系列的操作。我们做 Android 开发肯定需要知道其中的具体步骤细节。
+1. Activity的创建 创建一个 Activity 必须继承Activity的子类或现有的子类，一个常规的Activity的创建包含以下几个步骤：
+ 创建一个Java类。
+ 继承Activity的子类：这个子类可以是我们自己继承Activity写的也可以是现有的Activity的子类。我们继承的是 AppCompatActivity现有子类。
+ 在AndroidManifest.xml 清单文件中声明注册Activity：系统不会识别和运行任何未进行声明的 Activity。在声明注册一个Activity时我们需要用到&amp;lt;activity&amp;gt;标签，&amp;lt;activity&amp;gt;的常用属性如下:
+     属性 说明     android:banner=&amp;ldquo;drawable resource&amp;rdquo; 为Acticity关联项提供扩展图形化横幅的可绘制资源   android:clearTaskOnLaunch=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 为true时用户再次启动任务，会清除其他Activity直接启动应用根Activity,为false不清除,默认为false   android:colorMode=[ &amp;ldquo;hdr&amp;rdquo; | &amp;ldquo;wideColorGamut&amp;rdquo;] 请求在兼容设备上以广色域模式显示 Activity   android:directBootAware=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] Activity 是否支持直接启动，即其是否可以在用户解锁设备之前运行   android:enabled=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 系统是否可实例化 Activity   android:excludeFromRecents=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 是否应从最近使用的应用列表（即概览屏幕）中排除该 Activity 启动的任务   android:exported=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 表示此元素设置 Activity 是否可由其他应用的组件启动   android:finishOnTaskLaunch=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 每当用户再次启动 Activity 的任务（在主屏幕上选择任务）时，是否应关闭（完成）现有的 Activity 实例   android:hardwareAccelerated=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 是否应为此 Activity 启用硬件加速渲染 —“true”表示应启用，“false”表示不应启用。默认值为“false”   android:icon=&amp;ldquo;drawable resource&amp;rdquo; 指定 Activity 的图标   android:label=&amp;ldquo;string resource&amp;rdquo; 一种可由用户读取的 Activity 标签。在必须向用户呈现 Activity 时，屏幕上会显示此标签。此标签通常与 Activity 图标一并显示   android:launchMode=[&amp;ldquo;standard&amp;rdquo; | &amp;ldquo;singleTop&amp;rdquo; |&amp;ldquo;singleTask&amp;rdquo; | &amp;ldquo;singleInstance&amp;rdquo;] 有关应如何启动 Activity 的指令   android:name=&amp;ldquo;string&amp;rdquo; 实现 Activity 的类的名称，是 Activity 的子类。此属性值应为完全限定类名称   android:noHistory=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 当用户离开 Activity 且屏幕上不再显示该 Activity 时，是否应从 Activity 堆栈中将其移除并完成（调用其 finish() 方法）默认为 false   android:parentActivityName=&amp;ldquo;string&amp;rdquo; Activity 逻辑父项的类名称。   android:resizeableActivity=[&amp;ldquo;true&amp;rdquo; | &amp;ldquo;false&amp;rdquo;] 指定应用是否支持多窗口显示。   android:screenOrientation=[&amp;ldquo;unspecified&amp;rdquo; | &amp;ldquo;behind&amp;rdquo; |&amp;ldquo;landscape&amp;rdquo; | &amp;ldquo;portrait&amp;rdquo; |&amp;ldquo;reverseLandscape&amp;rdquo; | &amp;ldquo;reversePortrait&amp;rdquo; |&amp;ldquo;sensorLandscape&amp;rdquo; | &amp;ldquo;sensorPortrait&amp;rdquo; |&amp;ldquo;userLandscape&amp;rdquo; | &amp;ldquo;userPortrait&amp;rdquo; |&amp;ldquo;sensor&amp;rdquo; | &amp;ldquo;fullSensor&amp;rdquo; | &amp;ldquo;nosensor&amp;rdquo; |&amp;ldquo;user&amp;rdquo; | &amp;ldquo;fullUser&amp;rdquo; | &amp;ldquo;locked&amp;rdquo;] Activity 在设备上的显示方向。   android:theme=&amp;ldquo;resource or theme&amp;rdquo; 对定义 Activity 总体主题的样式资源的引用   android:windowSoftInputMode=[&amp;ldquo;stateUnspecified&amp;rdquo;, &amp;ldquo;stateUnchanged&amp;rdquo;, &amp;ldquo;stateHidden&amp;rdquo;,&amp;ldquo;stateAlwaysHidden&amp;rdquo;, &amp;ldquo;stateVisible&amp;rdquo;, &amp;ldquo;stateAlwaysVisible&amp;rdquo;, &amp;ldquo;adjustUnspecified&amp;rdquo;,&amp;ldquo;adjustResize&amp;rdquo;, &amp;ldquo;adjustPan&amp;rdquo;] Activity 的主窗口与包含屏幕软键盘的窗口之间的交互方式    &amp;lt;activity&amp;gt; 标签应为&amp;lt;application&amp;gt;标签的子标签，下面是一个AndroidManifest.</description>
+    </item>
+    
+    <item>
+      <title>3. Activity状态的保存</title>
+      <link>https://compass-ak.gitee.io/android/activity/activity%E7%8A%B6%E6%80%81%E7%9A%84%E4%BF%9D%E5%AD%98/</link>
+      <pubDate>Mon, 09 Sep 2019 21:29:43 +0800</pubDate>
+      
+      <guid>https://compass-ak.gitee.io/android/activity/activity%E7%8A%B6%E6%80%81%E7%9A%84%E4%BF%9D%E5%AD%98/</guid>
+      <description>1. Activity的状态 在Android系统中运行的Activity基本上以下面三种状态存在。
+ 继续 ：此时 Activity 位于屏幕前台并具有用户焦点。（有时也将此状态称作“运行中”。）
+ 暂停 ：另一个 Activity 位于屏幕前台并具有用户焦点，但此 Activity 仍可见。也就是说，另 一个 Activity 显示在此 Activity 上方，并且该 Activity 部分透明或未覆盖整个屏幕。 暂停的 Activity 处于完全活动状态（Activity 对象保留在内存中，它保留了所有状态和 成员信息，并与窗口管理器保持连接），但在内存极度不足的情况下，可能会被系统终止。
+ 停止 ：该 Activity 被另一个 Activity 完全遮盖（该 Activity 目前位于“后台”）。 已停止的 Activity 同样仍处于活动状态（Activity 对象保留在内存中，它保留了所有状态和成员信息，但未与窗口管理器连接）。 不过，它对用户不再可见，在他处需要内存时可能会被系统终止。
+  如果 Activity 处于暂停或停止状态，系统可通过要求其结束（调用其 finish() 方法）或直接终止其进程，将其从内存中删除。（将其结束或终止后）再次打开 Activity 时，必须重建。
+2. Activity的状态信息的保存 当一个Activity短时间处于暂停或停止状态时，Android系统会会自动保存其状态信息。当用户切换回到此Activity时，Activity的状态信息就会被恢复。但是就如上文说所，当系统急需内存的情况下，Activity就会被销毁，再访问该Activity，访问的就会是一个重建的Activity。如果你没有保存它的状态信息，那么会给用户不良的体验。为了提升App的用户体验就需要保存当前Activity中控件的信息。
+2.1 与Activity状态信息保存的方法  onSaveInstanceState() ：系统在将要销毁一个Activity，会先调用它这个方法。系统会向该方法传递一个 Bundle，您可以在其中使用 putString() 和 putInt() 等方法以名称-值对形式保存有关 Activity 状态的信息。然后，如果系统终止您的应用进程，并且用户返回您的 Activity，则系统会重建该 Activity，并将 Bundle 同时传递给 onCreate() 和 onRestoreInstanceState()。</description>
+    </item>
+    
+  </channel>
+</rss>
