@@ -26,7 +26,7 @@
 pip install selenium  下载浏览器驱动
    Google Chrome 驱动：https://chromedriver.storage.googleapis.com/index.html
  Mozilla Firefox 驱动：https://github.com/mozilla/geckodriver/releases
- mincrosoft Edge 驱动：https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+ Microsoft Edge 驱动：https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
  下载
   Demo 1 流程：打开百度，输入搜索关键字 selenium 点击搜索
 from selenium import webdriver from time import sleep #1.创建浏览器驱动对象 driver = webdriver.Edge(executable_path=&amp;quot;C:\\Users\\ASUS\\Desktop\\demo\\driver\\msedgedriver&amp;quot;) #driver = webdriver.</description>
